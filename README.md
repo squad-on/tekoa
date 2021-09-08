@@ -1,6 +1,6 @@
-# Terrakrya CMS
+# Tekoa
 
-Projeto de CMS para criação de sites de forma rápida e dinâmica
+Projeto de EAD para criação de trilhas de aprendizagens e desafios de forma rápida e dinâmica
 
 ### Tecnologias usadas
 
@@ -38,10 +38,10 @@ The server site is composed inside on top of Node.js tecnologies like:
 
 ```bash
 # Clone this repo
-git clone https://github.com/terrakrya/cms.git
+git clone https://github.com/dloopes/tekoa.git
 
 # Go inside downloaded directory
-cd cms/
+cd directory/
 
 # Install NPM dependecies
 $ yarn install
