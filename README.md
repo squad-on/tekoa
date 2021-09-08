@@ -38,7 +38,7 @@ The server site is composed inside on top of Node.js tecnologies like:
 
 ```bash
 # Clone this repo
-git clone https://github.com/terrakrya/cms.git
+git clone ttps://github.com/dloopes/tekoa.git
 
 # Go inside downloaded directory
 cd cms/
