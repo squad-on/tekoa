@@ -1,0 +1,289 @@
+[
+  {
+    "name": "agenda___pt-BR",
+    "path": "/agenda",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/agenda/index.vue",
+    "chunkName": "pages/agenda/index",
+    "_name": "_38b7a764"
+  },
+  {
+    "name": "biblioteca___pt-BR",
+    "path": "/biblioteca",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/biblioteca/index.vue",
+    "chunkName": "pages/biblioteca/index",
+    "_name": "_6ccb59f0"
+  },
+  {
+    "name": "conta___pt-BR",
+    "path": "/conta",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/index.vue",
+    "chunkName": "pages/conta/index",
+    "_name": "_c0e2127a"
+  },
+  {
+    "name": "login___pt-BR",
+    "path": "/login",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/login.vue",
+    "chunkName": "pages/login",
+    "_name": "_1b79cb3a"
+  },
+  {
+    "name": "loja___pt-BR",
+    "path": "/loja",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/loja/index.vue",
+    "chunkName": "pages/loja/index",
+    "_name": "_9632bb08"
+  },
+  {
+    "name": "noticias___pt-BR",
+    "path": "/noticias",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/noticias/index.vue",
+    "chunkName": "pages/noticias/index",
+    "_name": "_10286410"
+  },
+  {
+    "name": "conta-contacts___pt-BR",
+    "path": "/conta/contacts",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/contacts/index.vue",
+    "chunkName": "pages/conta/contacts/index",
+    "_name": "_d60d8916"
+  },
+  {
+    "name": "conta-events___pt-BR",
+    "path": "/conta/events",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/events/index.vue",
+    "chunkName": "pages/conta/events/index",
+    "_name": "_72dd7b0a"
+  },
+  {
+    "name": "conta-loja___pt-BR",
+    "path": "/conta/loja",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/loja/index.vue",
+    "chunkName": "pages/conta/loja/index",
+    "_name": "_3401f7dc"
+  },
+  {
+    "name": "conta-medias___pt-BR",
+    "path": "/conta/medias",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/medias/index.vue",
+    "chunkName": "pages/conta/medias/index",
+    "_name": "_821c1a1e"
+  },
+  {
+    "name": "conta-menus___pt-BR",
+    "path": "/conta/menus",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/menus/index.vue",
+    "chunkName": "pages/conta/menus/index",
+    "_name": "_338ccaa8"
+  },
+  {
+    "name": "conta-pages___pt-BR",
+    "path": "/conta/pages",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/pages/index.vue",
+    "chunkName": "pages/conta/pages/index",
+    "_name": "_8e0f4110"
+  },
+  {
+    "name": "conta-pedidos___pt-BR",
+    "path": "/conta/pedidos",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/pedidos/index.vue",
+    "chunkName": "pages/conta/pedidos/index",
+    "_name": "_6b848a7c"
+  },
+  {
+    "name": "conta-posts___pt-BR",
+    "path": "/conta/posts",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/posts/index.vue",
+    "chunkName": "pages/conta/posts/index",
+    "_name": "_96b33672"
+  },
+  {
+    "name": "conta-produtos___pt-BR",
+    "path": "/conta/produtos",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/produtos/index.vue",
+    "chunkName": "pages/conta/produtos/index",
+    "_name": "_1bc97efc"
+  },
+  {
+    "name": "conta-profile___pt-BR",
+    "path": "/conta/profile",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/profile.vue",
+    "chunkName": "pages/conta/profile",
+    "_name": "_1db73c4c"
+  },
+  {
+    "name": "conta-settings___pt-BR",
+    "path": "/conta/settings",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/settings/index.vue",
+    "chunkName": "pages/conta/settings/index",
+    "_name": "_292bd976"
+  },
+  {
+    "name": "conta-users___pt-BR",
+    "path": "/conta/users",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/users/index.vue",
+    "chunkName": "pages/conta/users/index",
+    "_name": "_3a4e0e88"
+  },
+  {
+    "name": "loja-carrinho___pt-BR",
+    "path": "/loja/carrinho",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/loja/carrinho.vue",
+    "chunkName": "pages/loja/carrinho",
+    "_name": "_580a2560"
+  },
+  {
+    "name": "loja-finalizar-pedido___pt-BR",
+    "path": "/loja/finalizar-pedido",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/loja/finalizar-pedido.vue",
+    "chunkName": "pages/loja/finalizar-pedido",
+    "_name": "_22695560"
+  },
+  {
+    "name": "conta-events-new___pt-BR",
+    "path": "/conta/events/new",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/events/new.vue",
+    "chunkName": "pages/conta/events/new",
+    "_name": "_18a97c89"
+  },
+  {
+    "name": "conta-medias-new___pt-BR",
+    "path": "/conta/medias/new",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/medias/new.vue",
+    "chunkName": "pages/conta/medias/new",
+    "_name": "_3f47d27f"
+  },
+  {
+    "name": "conta-menus-new___pt-BR",
+    "path": "/conta/menus/new",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/menus/new.vue",
+    "chunkName": "pages/conta/menus/new",
+    "_name": "_09532bf6"
+  },
+  {
+    "name": "conta-pages-new___pt-BR",
+    "path": "/conta/pages/new",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/pages/new.vue",
+    "chunkName": "pages/conta/pages/new",
+    "_name": "_5f3db4c6"
+  },
+  {
+    "name": "conta-posts-new___pt-BR",
+    "path": "/conta/posts/new",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/posts/new.vue",
+    "chunkName": "pages/conta/posts/new",
+    "_name": "_15fac1d5"
+  },
+  {
+    "name": "conta-produtos-new___pt-BR",
+    "path": "/conta/produtos/new",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/produtos/new.vue",
+    "chunkName": "pages/conta/produtos/new",
+    "_name": "_e7ce356c"
+  },
+  {
+    "name": "conta-users-new___pt-BR",
+    "path": "/conta/users/new",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/users/new.vue",
+    "chunkName": "pages/conta/users/new",
+    "_name": "_5f8861ec"
+  },
+  {
+    "name": "conta-pedidos-id___pt-BR",
+    "path": "/conta/pedidos/:id",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/pedidos/_id/index.vue",
+    "chunkName": "pages/conta/pedidos/_id/index",
+    "_name": "_2257a4ad"
+  },
+  {
+    "name": "conta-events-id-edit___pt-BR",
+    "path": "/conta/events/:id/edit",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/events/_id/edit.vue",
+    "chunkName": "pages/conta/events/_id/edit",
+    "_name": "_62b5e6a6"
+  },
+  {
+    "name": "conta-medias-id-edit___pt-BR",
+    "path": "/conta/medias/:id/edit",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/medias/_id/edit.vue",
+    "chunkName": "pages/conta/medias/_id/edit",
+    "_name": "_5e8cda70"
+  },
+  {
+    "name": "conta-menus-id-edit___pt-BR",
+    "path": "/conta/menus/:id/edit",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/menus/_id/edit.vue",
+    "chunkName": "pages/conta/menus/_id/edit",
+    "_name": "_647c594e"
+  },
+  {
+    "name": "conta-pages-id-edit___pt-BR",
+    "path": "/conta/pages/:id/edit",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/pages/_id/edit.vue",
+    "chunkName": "pages/conta/pages/_id/edit",
+    "_name": "_101c4c89"
+  },
+  {
+    "name": "conta-posts-id-edit___pt-BR",
+    "path": "/conta/posts/:id/edit",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/posts/_id/edit.vue",
+    "chunkName": "pages/conta/posts/_id/edit",
+    "_name": "_501810da"
+  },
+  {
+    "name": "conta-produtos-id-edit___pt-BR",
+    "path": "/conta/produtos/:id/edit",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/produtos/_id/edit.vue",
+    "chunkName": "pages/conta/produtos/_id/edit",
+    "_name": "_7dfece85"
+  },
+  {
+    "name": "conta-users-id-edit___pt-BR",
+    "path": "/conta/users/:id/edit",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/conta/users/_id/edit.vue",
+    "chunkName": "pages/conta/users/_id/edit",
+    "_name": "_5fe7fcc5"
+  },
+  {
+    "name": "agenda-id___pt-BR",
+    "path": "/agenda/:id",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/agenda/_id.vue",
+    "chunkName": "pages/agenda/_id",
+    "_name": "_534cea36"
+  },
+  {
+    "name": "biblioteca-id___pt-BR",
+    "path": "/biblioteca/:id",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/biblioteca/_id.vue",
+    "chunkName": "pages/biblioteca/_id",
+    "_name": "_3f9d1120"
+  },
+  {
+    "name": "loja-id___pt-BR",
+    "path": "/loja/:id",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/loja/_id.vue",
+    "chunkName": "pages/loja/_id",
+    "_name": "_157313e4"
+  },
+  {
+    "name": "noticias-id___pt-BR",
+    "path": "/noticias/:id",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/noticias/_id.vue",
+    "chunkName": "pages/noticias/_id",
+    "_name": "_47a02a78"
+  },
+  {
+    "name": "index___pt-BR",
+    "path": "/",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_51d22823"
+  },
+  {
+    "name": "id___pt-BR",
+    "path": "/:id",
+    "component": "/home/gouranitai/git/labs/tekoa/pages/_id.vue",
+    "chunkName": "pages/_id",
+    "_name": "_49fc516a"
+  }
+]

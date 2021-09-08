@@ -1,0 +1,22 @@
+[
+  {
+    "value": "pending",
+    "text": "Pendente"
+  },
+  {
+    "value": "processing",
+    "text": "Em processamento"
+  },
+  {
+    "value": "sent",
+    "text": "Produto enviado"
+  },
+  {
+    "value": "received",
+    "text": "Produto recebido"
+  },
+  {
+    "value": "canceled",
+    "text": "Cancelado"
+  }
+]
