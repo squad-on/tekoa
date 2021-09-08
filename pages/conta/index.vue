@@ -6,7 +6,7 @@
       <b-list-group-item to="/conta/menus">Menus</b-list-group-item>
       <b-list-group-item to="/conta/posts">Desafios</b-list-group-item>
       <b-list-group-item to="/conta/medias">Trilhas</b-list-group-item>
-      <b-list-group-item to="/conta/events">Avaliação</b-list-group-item>
+      <b-list-group-item to="/conta/events"></b-list-group-item>
       <b-list-group-item to="/conta/contacts">Contatos</b-list-group-item>
       <b-list-group-item to="/conta/users">Usuários</b-list-group-item>
       <b-list-group-item to="/conta/settings">Configurações</b-list-group-item>

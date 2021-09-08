@@ -1,7 +1,7 @@
 <template>
   <div v-if="event" class="event-page">
     <Breadcrumb
-      :links="[['Agenda', '/agenda']]"
+      :links="[['Reconhecimento', '/agenda']]"
       :active="event.title"
       :description="event.description"
     />

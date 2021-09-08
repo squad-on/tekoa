@@ -22,7 +22,7 @@
                 <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/menus">Menus</b-nav-item>
                 <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/medias">Trilhas</b-nav-item>
                 <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/posts">Desafios</b-nav-item>
-                <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/events">Avaliação</b-nav-item>
+                <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/events">Reconhecimento</b-nav-item>
                 <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/contacts">Contatos</b-nav-item>
                 <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/users">Usuários</b-nav-item>
                 <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/settings">Configurações</b-nav-item>
@@ -47,7 +47,7 @@
                   <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/menus">Menus</b-nav-item>
                   <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/medias">Trilhas</b-nav-item>
                   <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/posts">Desafios</b-nav-item>
-                  <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/events">Avaliação</b-nav-item>
+                  <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/events">Reconhecimento</b-nav-item>
                   <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/contacts">Contatos</b-nav-item>
                   <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/users">Usuários</b-nav-item>
                   <b-nav-item v-if="$auth.user.role === 'admin'" to="/conta/settings">Configurações</b-nav-item>

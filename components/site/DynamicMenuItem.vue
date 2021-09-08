@@ -10,7 +10,7 @@
     </template>
     <b-nav-item to="/biblioteca">Trilhas</b-nav-item>
     <b-nav-item to="/noticias">Desafios</b-nav-item>
-    <b-nav-item to="/agenda">Avaliação</b-nav-item>
+    <b-nav-item to="/agenda">Reconhecimento</b-nav-item>
     <b-nav-item :to="'/conta'" variant="primary" size="lg" title="Minha conta">
       <b-icon-person /> <span class="d-lg-none">Minha conta</span>
     </b-nav-item>
