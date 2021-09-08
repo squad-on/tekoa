@@ -38,10 +38,10 @@ The server site is composed inside on top of Node.js tecnologies like:
 
 ```bash
 # Clone this repo
-git clone ttps://github.com/dloopes/tekoa.git
+git clone https://github.com/dloopes/tekoa.git
 
 # Go inside downloaded directory
-cd cms/
+cd directory/
 
 # Install NPM dependecies
 $ yarn install
