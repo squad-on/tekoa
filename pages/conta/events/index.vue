@@ -43,7 +43,7 @@ export default {
       events: null,
       breadcrumb: [
         { text: 'Painel', to: '/conta' },
-        { text: 'Eventos', active: true }
+        { text: 'Avaliação', active: true }
       ],
       table: [
         { key: 'start_at', label: 'Data' },

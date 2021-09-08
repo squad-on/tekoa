@@ -19,18 +19,38 @@
             <b-col md="6" class="mb-3">
               <b-card img-src="~/assets/img/trilhas.jpg" img-alt="Notícias" img-left class="bg-white">
                 <b-card-text>
-                  <h5>Trilhas</h5>
+                  <h5>Seja um Senior!</h5>
                   <div class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                  <n-link to="/biblioteca?categoria=Exposições" class="stretched-link hidden" />
+                  <n-link to="/conta" class="stretched-link hidden" />
                 </b-card-text>
               </b-card>
             </b-col>
             <b-col>
               <b-card to img-src="~/assets/img/trilhas.jpg" img-alt="Acervo" img-left class="bg-white">
                 <b-card-text>
-                  <h5>Desafios</h5>
+                  <h5>Trilhe sua evolução</h5>
                   <div class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
                   <n-link to="/biblioteca" class="stretched-link hidden" />
+                </b-card-text>
+              </b-card>
+            </b-col>
+          </b-row>
+          <b-row class="mt-5">
+            <b-col md="6" class="mb-3">
+              <b-card img-src="~/assets/img/trilhas.jpg" img-alt="Notícias" img-left class="bg-white">
+                <b-card-text>
+                  <h5>Desafie-se!</h5>
+                  <div class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                  <n-link to="/noticias" class="stretched-link hidden" />
+                </b-card-text>
+              </b-card>
+            </b-col>
+            <b-col>
+              <b-card to img-src="~/assets/img/trilhas.jpg" img-alt="Acervo" img-left class="bg-white">
+                <b-card-text>
+                  <h5>Seja reconhecido!</h5>
+                  <div class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                  <n-link to="/agenda" class="stretched-link hidden" />
                 </b-card-text>
               </b-card>
             </b-col>
