@@ -1,6 +1,6 @@
-# Terrakrya CMS
+# Tekoa
 
-Projeto de CMS para criação de sites de forma rápida e dinâmica
+Projeto de EAD para criação de trilhas de aprendizagens e desafios de forma rápida e dinâmica
 
 ### Tecnologias usadas
 
