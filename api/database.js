@@ -12,7 +12,7 @@ require('./config/passport')
 
 const mongoose = require('mongoose')
 const isProduction = process.env.NODE_ENV === 'production'
-const DATABASE_URI = 'mongodb://localhost/' + process.env.APP_NAME
+const DATABASE_URI = 'mongodb://localhost:27017/' + process.env.APP_NAME
 
 mongoose.set('useFindAndModify', false)
 

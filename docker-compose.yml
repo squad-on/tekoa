@@ -2,7 +2,7 @@ version: "3"
 services:
   app:
     build:
-      dockerfile: ./development.dockerfile
+      dockerfile: ./Dockerfile
       context: .
     container_name: ${APP_NAME}_node
     command: yarn dev
@@ -17,6 +17,8 @@ services:
   mongodb:
     image: mongo:latest
     container_name: ${APP_NAME}_mongo
+    ports:
+      - "27017:27017"
     volumes:
       - mongodb:/data/db
       - mongodb_config:/data/configdb
