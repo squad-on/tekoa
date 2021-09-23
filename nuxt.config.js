@@ -38,7 +38,8 @@ export default {
     '@nuxtjs/google-fonts',
     '@nuxtjs/moment',
     '@nuxtjs/fontawesome',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/google-analytics',
+    '@nuxtjs/vuetify',
   ],
   modules: [
     // Doc: https://bootstrap-vue.js.org
@@ -119,6 +120,19 @@ export default {
   },
   googleAnalytics: {
     id: 'UA-185563105-2'
+  },
+  vuetify: {
+    customVariables: ['~/assets/css/variables.sass'],
+    treeShake: true,
+    theme: {
+      light: true, // you don't actually need this line as it's for default
+      themes: {
+        light: {
+          primary: '#5682ca',
+          success: '#5682ca',
+        },
+      },
+    },
   },
   proxy: {
     pathRewrite: {
