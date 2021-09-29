@@ -39,7 +39,7 @@ export default {
     '@nuxtjs/moment',
     '@nuxtjs/fontawesome',
     '@nuxtjs/google-analytics',
-    '@nuxtjs/vuetify',
+    '@nuxtjs/vuetify'
   ],
   modules: [
     // Doc: https://bootstrap-vue.js.org
@@ -129,10 +129,10 @@ export default {
       themes: {
         light: {
           primary: '#5682ca',
-          success: '#5682ca',
-        },
-      },
-    },
+          success: '#5682ca'
+        }
+      }
+    }
   },
   proxy: {
     pathRewrite: {
