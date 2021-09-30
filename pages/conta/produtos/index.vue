@@ -1,11 +1,11 @@
 <template>
   <div class="products">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <div>
       <div class="text-right mb-3">
-        <b-button variant="success" to="/conta/produtos/new">
+        <v-btn color="success" to="/conta/produtos/new">
           <b-icon-plus /> Cadastrar
-        </b-button>
+        </v-btn>
       </div>
       <div v-if="products">
         <ul v-if="products.length" class="list-unstyled">
@@ -22,21 +22,21 @@
               <small> / {{ product.qtd }} em estoque</small>
               <small v-if="product.orders"> / {{ product.orders.length }} pedidos</small>
               <small>
-                <b-badge v-if="product.published" v-b-tooltip variant="success" title="Publicado na loja"><b-icon-check /> Publicado</b-badge>
-                <b-badge v-else v-b-tooltip variant="light" title="Não publicado na loja">Não publicado</b-badge>
+                <b-badge v-if="product.published" v-b-tooltip color="success" title="Publicado na loja"><b-icon-check /> Publicado</b-badge>
+                <b-badge v-else v-b-tooltip color="light" title="Não publicado na loja">Não publicado</b-badge>
               </small>
             </p>
             <p class="mb-1">
               <n-link class="btn btn-info btn-sm" :to="'/conta/produtos/' + product._id + '/edit'">
                 Editar
               </n-link>
-              <b-button variant="danger" size="sm" @click="remove(product)">
+              <v-btn color="danger" size="sm" @click="remove(product)">
                 Excluír
-              </b-button>
+              </v-btn>
             </p>
           </b-media>
         </ul>
-        <b-alert v-else show variant="dark" class="text-center">Nenhum item encontrado</b-alert>
+        <b-alert v-else show color="dark" class="text-center">Nenhum item encontrado</b-alert>
       </div>
       <div v-else class="text-center">
         <b-spinner small label="Carregando..." />
@@ -54,7 +54,7 @@ export default {
     return {
       products: null,
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Loja', to: '/conta/loja' },
         { text: 'Produtos', active: true }
       ]

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-breadcrumb v-if="order" :items="breadcrumb" />
+    <AdminBreadcrumb v-if="order" :items="breadcrumb" />
     <div v-if="order">
       <h4 class="mb-3">Detalhes do pedido</h4>
       <table class="table b-table">
@@ -107,7 +107,7 @@ export default {
       orderStatus,
       order: null,
       breadcrumb: [
-        { text: this.$auth.user.role === 'user' ? 'Minha conta' : 'Painel', to: '/conta' },
+        { text: this.$auth.user.role === 'user' ? 'Minha conta' : 'Dashboard', to: '/conta' },
         { text: 'Loja', to: this.$auth.user.role === 'user' ? '/loja' : '/conta/loja' },
         { text: this.$auth.user.role === 'user' ? 'Meus pedidos' : 'Pedidos', to: '/conta/pedidos' },
         { text: 'Pedido', active: true }

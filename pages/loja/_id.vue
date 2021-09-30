@@ -6,7 +6,7 @@
       :active="product.name"
       :description="product.description"
     />
-    <b-container class="shop py-4">
+    <v-container class="shop py-4">
       <div v-if="product">
         <div class="text-md-right">
           <CartButton />
@@ -47,7 +47,7 @@
       <div v-else class="text-center">
         <b-spinner />
       </div>
-    </b-container>
+    </v-container>
   </div>
 </template>
 <script>

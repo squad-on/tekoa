@@ -1,6 +1,6 @@
 <template>
   <div class="create">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <MenuForm v-if="menu" :menu="menu" />
     <div v-else class="text-center">
       <b-spinner small label="Carregando..." />
@@ -14,7 +14,7 @@ export default {
     return {
       menu: null,
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Menus', to: '/conta/menus' },
         { text: 'Editar', active: true }
       ]

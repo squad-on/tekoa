@@ -6,7 +6,7 @@
       :description="event.description"
     />
     <section class="content">
-      <b-container>
+      <v-container>
         <h1 class="title">{{ event.title }}</h1>
         <p v-if="event.description" class="subtitle">{{ event.description }}</p>
         <p v-if="event.end_at" class="subtitle">
@@ -24,7 +24,7 @@
           <Documents :documents="event.documents" />
           <share />
         </div>
-      </b-container>
+      </v-container>
     </section>
   </div>
 </template>

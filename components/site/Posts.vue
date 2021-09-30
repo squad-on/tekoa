@@ -1,7 +1,7 @@
 <template>
   <div class="posts-component pt-4">
-    <b-row>
-      <b-col v-for="post in posts" :key="post._id" lg="6" class="mb-2">
+    <v-row>
+      <v-col v-for="post in posts" :key="post._id" cols="12" lg="6" class="mb-2">
         <b-card :img-src="post.picture ? post.picture.thumb : null" :img-alt="post.title">
           <b-card-text>
             <h5>{{ post.title }}</h5>
@@ -9,8 +9,8 @@
             <tags :tags="post.tags" @click="filterbyTag" />
           </b-card-text>
         </b-card>
-      </b-col>
-    </b-row>
+      </v-col>
+    </v-row>
   </div>
 </template>
 

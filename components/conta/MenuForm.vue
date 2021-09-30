@@ -1,30 +1,20 @@
 <template>
   <ValidationObserver v-slot="{ validate, invalid }">
-    <b-form @submit.prevent="validate().then(save)">
-      <b-form-group label="Menu Principal">
-        <v-select v-if="parent_menus" v-model="form.menu" :options="parent_menus" label="name" :reduce="item => item._id" />
-        <small tabindex="-1" class="form-text text-muted">Preenchendo, o menu deste cadastro será exibido dentro do Menu Principal, como um Sub-Menu.</small>
-      </b-form-group>
-      <b-form-group v-if="pages" label="Relacione com uma página existente">
-        <v-select v-model="form.page" :options="pages" label="title" :reduce="item => item._id" @input="setName" />
-      </b-form-group>
-      <b-form-group v-if="!form.page" label="Ou insira uma URL customizada">
+    <v-form @submit.prevent="validate().then(save)">
+      <!-- <v-select outlined v-if="parent_menus" label="Menu Principal" v-model="form.menu" :options="parent_menus" label="name" :reduce="item => item._id" messages="Preenchendo, o menu deste cadastro será exibido dentro do Menu Principal, como um Sub-Menu" /> -->
+      <v-select v-if="pages" v-model="form.page" outlined :items="pages.map(page => ({value: page._id, text: page.title}))" label="Página" messages="Relacione com uma página existente" @input="setName" />
+      <template v-if="!form.page">
         <validation-provider v-slot="{ errors }" name="url">
-          <b-form-input v-model="form.url" name="url" />
-          <span class="text-danger">{{ errors[0] }}</span>
+          <v-text-field v-model="form.url" outlined name="url" label="Ou insira uma URL customizada" :error-messages="errors" messages="Comece com / para páginas internas" />
         </validation-provider>
-        <small tabindex="-1" class="form-text text-muted">Comece com / para páginas internas.</small>
-      </b-form-group>
-      <b-form-group label="Nome que aparece no menu *">
-        <validation-provider v-slot="{ errors }" name="nome" rules="required">
-          <b-form-input v-model="form.name" name="name" />
-          <span class="text-danger">{{ errors[0] }}</span>
-        </validation-provider>
-      </b-form-group>
-      <b-button type="submit" variant="success" block :disabled="invalid">
+      </template>
+      <validation-provider v-slot="{ errors }" name="nome" rules="required">
+        <v-text-field v-model="form.name" outlined name="name" label="Nome que aparece no menu *" :error-messages="errors" />
+      </validation-provider>
+      <v-btn type="submit" color="success" block :disabled="invalid">
         <b-icon-check-circle /> Salvar
-      </b-button>
-    </b-form>
+      </v-btn>
+    </v-form>
   </ValidationObserver>
 </template>
 

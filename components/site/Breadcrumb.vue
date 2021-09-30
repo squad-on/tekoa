@@ -1,17 +1,19 @@
 <template>
-  <div class="breadcrumb-wrapper">
-    <div class="container">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <n-link to="/"><b-icon-house-fill class="mr-1" /> {{ settings ? settings.title : '' }}</n-link>
-        </li>
-        <li v-for="(link, index) in links" :key="index" class="breadcrumb-item">
-          <n-link :to="link[1]">{{ link[0] }}</n-link>
-        </li>
-        <li v-if="active" class="breadcrumb-item active">{{ active }}</li>
-      </ol>
-    </div>
-  </div>
+  <v-toolbar dark color="#151621" elevation="0" class="pt-3 mb-10">
+    <v-btn
+      v-if="$route.path !== '/'"
+      small
+      class="tertiary ml-0"
+      icon
+      @click="$router.replace(links && links.length ? links[links.length -1][1] : '/')"
+    >
+      <v-icon> mdi-chevron-left </v-icon>
+    </v-btn>
+    <v-toolbar-title>
+      <strong v-if="active" class="breadcrumb-item active primary--text">{{ active }}</strong>
+      <strong v-else class="breadcrumb-item active secondary--text">Bem vindo <span v-if="$auth.user && $auth.user.name" class="primary--text">{{ $auth.user.name }}</span></strong>
+    </v-toolbar-title>
+  </v-toolbar>
 </template>
 
 <script>

@@ -1,30 +1,27 @@
 <template>
   <div class="pages">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <div>
       <div class="text-right mb-3">
-        <b-button variant="success" to="/conta/pages/new">
+        <v-btn color="success" to="/conta/pages/new">
           <b-icon-plus /> Cadastrar
-        </b-button>
+        </v-btn>
       </div>
       <div v-if="pages">
-        <b-table v-if="pages.length" :fields="table" :items="pages" responsive="sm">
-          <template v-slot:cell(tags)="data">
-            <tags :tags="data.value" />
+        <v-data-table v-if="pages.length" :headers="table" :items="pages" light>
+          <template v-slot:item.slug="{ item }">
+            <a :href="'/' + item.slug" target="_blank">{{ '/' + item.slug }}</a>
           </template>
-          <template v-slot:cell(slug)="data">
-            <a :href="'/' + data.value" target="_blank">{{ '/' + data.value }}</a>
+          <template v-slot:item.actions="{ item }">
+            <v-btn icon sm :to="'/conta/pages/' + item.slug + '/edit'">
+              <v-icon>mdi-pencil-outline</v-icon>
+            </v-btn>
+            <v-btn icon size="sm" @click="remove(item)">
+              <v-icon>mdi-delete</v-icon>
+            </v-btn>
           </template>
-          <template v-slot:cell(actions)="data">
-            <n-link class="btn btn-info btn-sm" :to="'/conta/pages/' + data.item.slug + '/edit'">
-              <b-icon-pencil />
-            </n-link>
-            <b-button variant="danger" size="sm" @click="remove(data.item)">
-              <b-icon-trash />
-            </b-button>
-          </template>
-        </b-table>
-        <b-alert v-else show variant="dark" class="text-center">Nenhum item encontrado</b-alert>
+        </v-data-table>
+        <b-alert v-else show color="dark" class="text-center">Nenhum item encontrado</b-alert>
       </div>
       <div v-else class="text-center">
         <b-spinner small label="Carregando..." />
@@ -42,13 +39,13 @@ export default {
     return {
       pages: null,
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Páginas', active: true }
       ],
       table: [
-        { key: 'title', label: 'Título' },
-        { key: 'slug', label: 'Url' },
-        { key: 'actions', label: '', class: 'text-right' }
+        { value: 'title', text: 'Título' },
+        { value: 'slug', text: 'URL' },
+        { value: 'actions', text: '', align: 'right' }
       ]
     }
   },

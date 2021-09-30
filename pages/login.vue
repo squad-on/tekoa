@@ -4,24 +4,20 @@
       :active="tab === 'login' ? 'Entrar' : 'Cadastre-se'"
     />
     <section class="content pb-5">
-      <b-container fluid="md">
+      <v-container fluid>
         <div v-show="tab === 'login'">
           <form @submit.prevent="login">
-            <b-form-group label="Digite seu email">
-              <b-form-input v-model="form.email" type="text" />
-            </b-form-group>
-            <b-form-group label="Digite sua senha">
-              <b-form-input v-model="form.password" type="password" />
-            </b-form-group>
+            <v-text-field v-model="form.email" type="text" label="Digite seu email" />
+            <v-text-field v-model="form.password" type="password" label="Digite sua senha" />
             <div class="text-center">
-              <b-button type="submit" variant="success" block size="lg">
+              <v-btn type="submit" color="success" block size="lg">
                 Entrar
-              </b-button>
+              </v-btn>
               <p class="mt-4">
                 Ainda não possúi uma conta?
-                <b-btn variant="primary" size="sm" @click="open('register')">
+                <v-btn color="primary" size="sm" @click="open('register')">
                   <strong>Cadastre-se</strong>
-                </b-btn>
+                </v-btn>
               </p>
             </div>
           </form>
@@ -29,84 +25,70 @@
         <div v-show="tab === 'register'">
           <ValidationObserver v-slot="{ validate, invalid }">
             <form @submit.prevent="validate().then(register)">
-              <b-row>
-                <b-col md="6">
-                  <b-form-group label="Seu nome completo *">
-                    <validation-provider v-slot="{ errors }" name="nome" rules="required">
-                      <b-form-input v-model="register_form.name" name="name" />
-                      <span class="text-danger">{{ errors[0] }}</span>
-                    </validation-provider>
-                  </b-form-group>
-                </b-col>
-                <b-col md="6">
-                  <b-form-group label="Você faz parte de alguma organização?">
-                    <b-form-input v-model="register_form.organization" />
-                  </b-form-group>
-                </b-col>
-                <b-col md="6">
-                  <b-form-group label="CPF/CNPJ *">
-                    <validation-provider v-slot="{ errors }" name="CPF/CNPJ" rules="required">
-                      <b-form-input v-model="register_form.cpf_cnpj" v-mask="['###.###.###-##', '##.###.###/####-##']" name="cpf_cnpj" />
-                      <span class="text-danger">{{ errors[0] }}</span>
-                    </validation-provider>
-                  </b-form-group>
-                </b-col>
-                <b-col md="6">
-                  <b-form-group label="Telefone *">
-                    <validation-provider v-slot="{ errors }" name="telefone" rules="required">
-                      <b-form-input v-model="register_form.phone" v-validate="'required'" v-mask="['(##) ####-####', '(##) #####-####']" name="phone" placeholder="(99) 99999-9999" />
-                      <span class="text-danger">{{ errors[0] }}</span>
-                    </validation-provider>
-                  </b-form-group>
-                </b-col>
-                <b-col md="12">
-                  <b-form-group label="Seu endereço">
-                    <AddressForm v-model="register_form.address" />
-                  </b-form-group>
-                </b-col>
-                <b-col md="6">
-                  <b-form-group label="Seu email">
-                    <validation-provider v-slot="{ errors }" name="email" rules="required|email">
-                      <b-form-input v-model="register_form.email" name="email" />
-                      <span class="text-danger">{{ errors[0] }}</span>
-                    </validation-provider>
-                  </b-form-group>
-                </b-col>
-              </b-row>
-              <b-row>
-                <b-col md="6">
-                  <b-form-group label="Sua senha">
-                    <validation-provider v-slot="{ errors }" name="senha" rules="required|min:6">
-                      <b-form-input v-model="register_form.password" type="password" name="pass" />
-                      <span class="text-danger">{{ errors[0] }}</span>
-                    </validation-provider>
-                  </b-form-group>
-                </b-col>
-                <b-col md="6">
-                  <b-form-group label="Confirme a sua senha">
-                    <validation-provider v-slot="{ errors }" name="confirmar senha" rules="required">
-                      <b-form-input v-model="register_form.password_confirmation" type="password" name="pass_confirmation" />
-                      <span class="text-danger">{{ errors[0] }}</span>
-                      <span v-if="!passwordConfirmed" class="text-danger">As senhas digitadas não conferem</span>
-                    </validation-provider>
-                  </b-form-group>
-                </b-col>
-              </b-row>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <validation-provider v-slot="{ errors }" name="nome" rules="required">
+                    <v-text-field v-model="register_form.name" name="name" label="Seu nome completo *" :error-messages="errors" />
+                  </validation-provider>
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field v-model="register_form.organization" label="Você faz parte de alguma organização?" />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <validation-provider v-slot="{ errors }" name="CPF/CNPJ" rules="required">
+                    <v-text-field v-model="register_form.cpf_cnpj" v-mask="['###.###.###-##', '##.###.###/####-##']" name="cpf_cnpj" label="CPF/CNPJ *" :error-messages="errors" />
+                  </validation-provider>
+                </v-col>
+                <v-col cols="12" md="6">
+                  <validation-provider v-slot="{ errors }" name="telefone" rules="required">
+                    <v-text-field v-model="register_form.phone" v-validate="'required'" v-mask="['(##) ####-####', '(##) #####-####']" name="phone" placeholder="(99) 99999-9999" label="Telefone *" :error-messages="errors" />
+                  </validation-provider>
+                </v-col>
+                <v-col cols="12" md="12">
+                  <AddressForm v-model="register_form.address" label="Seu endereço" />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <validation-provider v-slot="{ errors }" name="email" rules="required|email">
+                    <v-text-field v-model="register_form.email" name="email" label="Seu email" :error-messages="errors" />
+                  </validation-provider>
+                </v-col>
+                </v-col>
+                </v-col>
+                </v-col>
+                </v-col>
+                </v-col>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <validation-provider v-slot="{ errors }" name="senha" rules="required|min:6">
+                    <v-text-field v-model="register_form.password" type="password" name="pass" label="Sua senha" :error-messages="errors" />
+                  </validation-provider>
+                </v-col>
+                <v-col cols="12" md="6">
+                  <validation-provider v-slot="{ errors }" name="confirmar senha" rules="required">
+                    <v-text-field v-model="register_form.password_confirmation" type="password" name="pass_confirmation" label="Confirme a sua senha" :error-messages="errors" />
+                    <span v-if="!passwordConfirmed" class="text-danger">As senhas digitadas não conferem</span>
+                  </validation-provider>
+                </v-col>
+                </v-col>
+                </v-col>
+              </v-row>
               <div class="text-center">
-                <b-button type="submit" variant="success" block size="lg" :disabled="invalid">
+                <v-btn type="submit" color="success" block size="lg" :disabled="invalid">
                   Cadastrar
-                </b-button>
+                </v-btn>
                 <p class="mt-4">
                   Já possúi uma conta?
-                  <b-btn variant="primary" size="sm" @click="open('login')">
+                  <v-btn color="primary" size="sm" @click="open('login')">
                     <strong>Entre</strong>
-                  </b-btn>
+                  </v-btn>
                 </p>
               </div>
             </form>
           </ValidationObserver>
         </div>
-      </b-container>
+      </v-container>
     </section>
   </div>
 </template>

@@ -1,45 +1,45 @@
 <template>
   <ValidationObserver v-slot="{ validate, invalid }">
     <b-form @submit.prevent="validate().then(save)">
-      <b-row>
-        <b-col md="12">
+      <v-row>
+        <v-col cols="12" md="12">
           <b-form-group label="Dê um nome para o evento *">
             <validation-provider v-slot="{ errors }" name="título" rules="required">
               <b-form-input v-model="form.title" name="title" />
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col md="6">
+        </v-col>
+        <v-col cols="12" md="6">
           <date-time-form v-model="form.start_at" label="Começa em" />
-        </b-col>
-        <b-col md="6">
+        </v-col>
+        <v-col cols="12" md="6">
           <date-time-form v-model="form.end_at" label="Termina em" />
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <b-form-group label="Introdução" description="Uma descrição curta de até 160 caracteres">
             <b-form-textarea v-model="form.description" name="description" />
           </b-form-group>
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <b-form-group label="Descrição completa">
             <quill-editor ref="quillEdit" v-model="form.content" />
             <input id="quillfile" type="file" hidden @change="quillUpload">
           </b-form-group>
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <Upload v-model="form.picture" type="images" label="Foto de capa" />
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <Upload v-model="form.documents" label="Documentos" type="documents" multiple edit-title />
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <tags-form v-model="form.tags" :current-tags="currentTags" />
-        </b-col>
-      </b-row>
-      <b-button class="mb-4 mt-4" type="submit" variant="success" block :disabled="invalid">
+        </v-col>
+      </v-row>
+      <v-btn class="mb-4 mt-4" type="submit" color="success" block :disabled="invalid">
         Salvar
-      </b-button>
+      </v-btn>
     </b-form>
   </ValidationObserver>
 </template>

@@ -1,13 +1,13 @@
 <template>
   <b-form-group :label="label">
-    <b-row no-gutters>
-      <b-col md="6">
+    <v-row no-gutters>
+      <v-col cols="12" md="6">
         <b-form-datepicker v-model="date" v-bind="{ labelNoDateSelected: 'Selecione uma data' }" locale="pt-BR" :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }" @input="changed" />
-      </b-col>
-      <b-col v-if="date" md="6">
+      </v-col>
+      <v-col v-if="date" cols="12" md="6">
         <b-form-timepicker v-model="time" v-bind="{ labelNoTimeSelected: 'Tem hora?' }" locale="pt-BR" @input="changed" />
-      </b-col>
-    </b-row>
+      </v-col>
+    </v-row>
   </b-form-group>
 </template>
 

@@ -1,13 +1,13 @@
 <template>
   <ValidationObserver v-slot="{ validate, invalid }">
     <b-form @submit.prevent="validate().then(save)">
-      <b-row>
-        <b-col md="12">
+      <v-row>
+        <v-col cols="12" md="12">
           <b-form-group label="Título">
             <b-form-input v-model="form.title" name="title" @input="generateSlug" />
           </b-form-group>
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <b-form-group v-if="form.title" label="Url da página" disabled>
             <b-form-input :value="'/' + form.slug" name="slug" />
             <small class="form-text text-muted">
@@ -15,31 +15,31 @@
               <n-link :to="'/' + form.slug" target="_blank">{{ '/' + form.slug }} </n-link>
             </small>
           </b-form-group>
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <tags-form v-model="form.tags" :current-tags="currentTags" />
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <b-form-group label="Introdução">
             <b-form-textarea v-model="form.description" name="description" />
           </b-form-group>
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <Upload v-model="form.pictures" label="Banners" type="images" multiple edit-title edit-description edit-link />
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <Upload v-model="form.documents" label="Documentos" type="documents" multiple edit-title />
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <b-form-group label="Conteúdo da página">
             <quill-editor ref="quillEdit" v-model="form.content" />
             <input id="quillfile" type="file" hidden @change="quillUpload">
           </b-form-group>
-        </b-col>
-      </b-row>
-      <b-button class="mb-4 mt-4" type="submit" variant="success" :disabled="invalid" block>
+        </v-col>
+      </v-row>
+      <v-btn class="mb-4 mt-4" type="submit" color="success" :disabled="invalid" block>
         Salvar
-      </b-button>
+      </v-btn>
     </b-form>
   </ValidationObserver>
 </template>

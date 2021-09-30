@@ -2,71 +2,71 @@
   <ValidationObserver v-slot="{ validate, invalid }">
     <b-form @submit.prevent="validate().then(save)">
       <Upload v-model="form.picture" type="images" label="Foto do perfil" avatar />
-      <b-row>
-        <b-col md="6">
+      <v-row>
+        <v-col cols="12" md="6">
           <b-form-group label="Nome *">
             <validation-provider v-slot="{ errors }" name="nome" rules="required">
               <b-form-input v-model="form.name" name="name" />
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col md="6">
+        </v-col>
+        <v-col cols="12" md="6">
           <b-form-group label="Organização">
             <b-form-input v-model="form.organization" />
           </b-form-group>
-        </b-col>
-        <b-col md="6">
+        </v-col>
+        <v-col cols="12" md="6">
           <b-form-group label="CPF/CNPJ *">
             <validation-provider v-slot="{ errors }" name="CPF/CNPJ" rules="required">
               <b-form-input v-model="form.cpf_cnpj" v-mask="['###.###.###-##', '##.###.###/####-##']" name="cpf_cnpj" />
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col md="6">
+        </v-col>
+        <v-col cols="12" md="6">
           <b-form-group label="Telefone *">
             <validation-provider v-slot="{ errors }" name="telefone" rules="required">
               <b-form-input v-model="form.phone" v-validate="'required'" v-mask="['(##) ####-####', '(##) #####-####']" name="phone" placeholder="(99) 99999-9999" />
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <b-form-group label="Endereços *">
             <AddressesForm v-model="form.addresses" />
           </b-form-group>
-        </b-col>
-        <b-col v-if="$auth.user.role === 'admin'" md="6">
+        </v-col>
+        <v-col v-if="$auth.user.role === 'admin'" cols="12" md="6">
           <b-form-group label="Perfil *">
             <validation-provider v-slot="{ errors }" rules="required">
               <b-form-select v-model="form.role" :options="roles" />
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col md="6">
+        </v-col>
+        <v-col cols="12" md="6">
           <b-form-group label="Email *">
             <validation-provider v-slot="{ errors }" name="email" rules="required|email">
               <b-form-input v-model="form.email" name="email" />
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
-            <b-button v-if="user" variant="light" size="sm" class="float-right mt-1" @click="changePassword">
+            <v-btn v-if="user" color="light" size="sm" class="float-right mt-1" @click="changePassword">
               Alterar senha
-            </b-button>
+            </v-btn>
           </b-form-group>
-        </b-col>
-      </b-row>
-      <b-row v-if="show_password">
-        <b-col md="6">
+        </v-col>
+      </v-row>
+      <v-row v-if="show_password">
+        <v-col cols="12" md="6">
           <b-form-group label="Senha *">
             <validation-provider v-slot="{ errors }" name="senha" rules="required|min:6">
               <b-form-input v-model="form.password" type="password" name="pass" />
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col md="6">
+        </v-col>
+        <v-col cols="12" md="6">
           <b-form-group label="Confirmar senha *">
             <validation-provider v-slot="{ errors }" name="confirmar senha" rules="required">
               <b-form-input v-model="form.password_confirmation" type="password" name="pass_confirmation" />
@@ -74,12 +74,12 @@
               <span v-if="!passwordConfirmed" class="text-danger">As senhas digitadas não conferem</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-      </b-row>
+        </v-col>
+      </v-row>
       <br>
-      <b-button type="submit" variant="success" block :disabled="invalid">
+      <v-btn type="submit" color="success" block :disabled="invalid">
         Salvar
-      </b-button>
+      </v-btn>
     </b-form>
   </ValidationObserver>
 </template>

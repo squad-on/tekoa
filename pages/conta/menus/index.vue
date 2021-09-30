@@ -1,10 +1,10 @@
 <template>
   <div class="menus">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <div class="text-right mb-3">
-      <b-button variant="success" to="/conta/menus/new">
+      <v-btn color="success" to="/conta/menus/new">
         <b-icon-plus /> Cadastrar
-      </b-button>
+      </v-btn>
     </div>
     <div v-if="menus">
       <b-table v-if="menus.length" :fields="table" :items="menus" responsive="sm">
@@ -21,12 +21,12 @@
           <n-link class="btn btn-info btn-sm" :to="'/conta/menus/' + data.item.id + '/edit'">
             <b-icon-pencil />
           </n-link>
-          <b-button variant="danger" size="sm" @click="remove(data.item)">
+          <v-btn color="danger" size="sm" @click="remove(data.item)">
             <b-icon-trash />
-          </b-button>
+          </v-btn>
         </template>
       </b-table>
-      <b-alert v-else show variant="dark" class="text-center">Nenhum Menu encontrado</b-alert>
+      <b-alert v-else show color="dark" class="text-center">Nenhum Menu encontrado</b-alert>
     </div>
     <div v-else class="text-center">
       <b-spinner small label="Carregando..." />
@@ -43,7 +43,7 @@ export default {
     return {
       menus: null,
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Menus', active: true }
       ],
       table: [

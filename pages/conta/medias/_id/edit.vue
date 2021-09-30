@@ -1,6 +1,6 @@
 <template>
   <div class="create">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <MediaForm v-if="media" :media="media" />
     <div v-else class="text-center">
       <b-spinner small label="Carregando..." />
@@ -14,7 +14,7 @@ export default {
     return {
       media: null,
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Trilhas', to: '/conta/medias' },
         { text: 'Editar item', active: true }
       ]

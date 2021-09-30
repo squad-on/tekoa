@@ -1,12 +1,12 @@
 <template>
   <div class="dashboard">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <b-list-group v-if="$auth.user.role === 'admin'">
       <b-list-group-item to="/conta/pages">Páginas</b-list-group-item>
       <b-list-group-item to="/conta/menus">Menus</b-list-group-item>
       <b-list-group-item to="/conta/posts">Desafios</b-list-group-item>
       <b-list-group-item to="/conta/medias">Trilhas</b-list-group-item>
-      <b-list-group-item to="/conta/events"></b-list-group-item>
+      <b-list-group-item to="/conta/events" />
       <b-list-group-item to="/conta/contacts">Contatos</b-list-group-item>
       <b-list-group-item to="/conta/users">Usuários</b-list-group-item>
       <b-list-group-item to="/conta/settings">Configurações</b-list-group-item>
@@ -24,7 +24,7 @@ export default {
   data () {
     return {
       breadcrumb: [
-        { text: this.$auth.user.role === 'user' ? 'Minha conta' : 'Painel', active: true }
+        { text: this.$auth.user.role === 'user' ? 'Minha conta' : 'Dashboard', active: true }
       ]
     }
   }

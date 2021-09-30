@@ -1,6 +1,6 @@
 <template>
   <div class="create">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <UserForm />
   </div>
 </template>
@@ -10,7 +10,7 @@ export default {
   data () {
     return {
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Usuários', to: '/conta/users' },
         { text: 'Cadastrar', active: true }
       ]

@@ -5,12 +5,12 @@
     />
     <section class="content pb-5">
       <Page slug="agenda" />
-      <b-container>
+      <v-container>
         <br>
         <div v-if="events">
           <calendar :events="events" />
         </div>
-      </b-container>
+      </v-container>
       <share />
     </section>
   </div>

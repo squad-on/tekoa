@@ -1,10 +1,10 @@
 <template>
   <div class="contacts">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <div>
       <div v-if="contacts">
         <b-table v-if="contacts.length" :fields="table" :items="contacts" responsive="sm" />
-        <b-alert v-else show variant="dark" class="text-center">Nenhum item encontrado</b-alert>
+        <b-alert v-else show color="dark" class="text-center">Nenhum item encontrado</b-alert>
       </div>
       <div v-else class="text-center">
         <b-spinner small label="Carregando..." />
@@ -22,7 +22,7 @@ export default {
     return {
       contacts: null,
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Contatos', active: true }
       ],
       table: [

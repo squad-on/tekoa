@@ -1,6 +1,6 @@
 <template>
   <div class="create">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <SettingsForm v-if="settings" :settings="settings" />
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
     return {
       settings: null,
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Configurações', active: true }
       ]
     }

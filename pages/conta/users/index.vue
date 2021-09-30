@@ -1,10 +1,10 @@
 <template>
   <div class="users">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <div class="text-right mb-3">
-      <b-button variant="success" to="/conta/users/new">
+      <v-btn color="success" to="/conta/users/new">
         <b-icon-plus /> Cadastrar
-      </b-button>
+      </v-btn>
     </div>
     <div v-if="users">
       <b-table v-if="users.length" :fields="table" :items="users" responsive="sm">
@@ -15,12 +15,12 @@
           <n-link class="btn btn-info btn-sm" :to="'/conta/users/' + data.item._id + '/edit'">
             <b-icon-pencil />
           </n-link>
-          <b-button variant="danger" size="sm" @click="remove(data.item)">
+          <v-btn color="danger" size="sm" @click="remove(data.item)">
             <b-icon-trash />
-          </b-button>
+          </v-btn>
         </template>
       </b-table>
-      <b-alert v-else show variant="dark" class="text-center">Nenhum item encontrado</b-alert>
+      <b-alert v-else show color="dark" class="text-center">Nenhum item encontrado</b-alert>
     </div>
     <div v-else class="text-center">
       <b-spinner small label="Carregando..." />
@@ -40,7 +40,7 @@ export default {
       optionText,
       users: null,
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Usuários', active: true }
       ],
       table: [

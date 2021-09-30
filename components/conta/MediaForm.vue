@@ -17,46 +17,46 @@
             <b-form-input v-model="form.url" @input="loadUrl" />
             <b-spinner v-if="loadingUrl" small label="Carregando vídeo" />
             <div v-if="form.oembed && !loadingUrl" class="mt-3" v-html="form.oembed" />
-             <Upload v-model="form.documents" label="Ou envie os arquivos" type="documents" multiple edit-title @uploaded="fileUploaded" />
+            <Upload v-model="form.documents" label="Ou envie os arquivos" type="documents" multiple edit-title @uploaded="fileUploaded" />
           </b-form-group>
         </div>
         <div>
-          <b-row>
-            <b-col md="12">
+          <v-row>
+            <v-col cols="12" md="12">
               <b-form-group label="Título *">
                 <validation-provider v-slot="{ errors }" name="título" rules="required">
                   <b-form-input v-model="form.title" name="title" />
                   <span class="text-danger">{{ errors[0] }}</span>
                 </validation-provider>
               </b-form-group>
-            </b-col>
-            <b-col md="12">
+            </v-col>
+            <v-col cols="12" md="12">
               <b-form-group label="Descrição">
                 <b-form-textarea v-model="form.description" name="description" />
               </b-form-group>
-            </b-col>
-            <b-col md="12">
+            </v-col>
+            <v-col cols="12" md="12">
               <tags-form v-model="form.tags" :current-tags="currentTags" />
-            </b-col>
-            <b-col md="6">
+            </v-col>
+            <v-col cols="12" md="6">
               <b-form-group label="Data da publicação">
                 <b-form-datepicker v-model="form.publishing_date" />
               </b-form-group>
-            </b-col>
-            <b-col md="6">
+            </v-col>
+            <v-col cols="12" md="6">
               <b-form-group label="Formato da data">
                 <b-form-select v-model="form.publishing_date_format" :options="dateFormatOptions" />
               </b-form-group>
-            </b-col>
-            <b-col md="6">
+            </v-col>
+            <v-col cols="12" md="6">
               <b-form-group label="Editora/Fonte" description="Veículo de comunicação onde foi publicado">
                 <b-form-input v-model="form.publishing_house" />
               </b-form-group>
-            </b-col>
-          </b-row>
-          <b-button class="mb-4 mt-4" type="submit" variant="success" block :disabled="invalid">
+            </v-col>
+          </v-row>
+          <v-btn class="mb-4 mt-4" type="submit" color="success" block :disabled="invalid">
             Salvar
-          </b-button>
+          </v-btn>
         </div>
       </div>
     </b-form>

@@ -5,14 +5,14 @@
     />
     <section class="content pb-5">
       <Page slug="desafios" />
-      <b-container>
+      <v-container>
         <tags :to="$route.path" />
         <div v-if="posts">
           <Posts :posts="posts" />
           <div v-if="posts.length === 0" class="alert text-center">Nenhum desafio encontrado</div>
           <share />
         </div>
-      </b-container>
+      </v-container>
     </section>
   </div>
 </template>

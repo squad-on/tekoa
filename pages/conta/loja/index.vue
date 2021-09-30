@@ -1,14 +1,14 @@
 <template>
   <div class="events">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <div>
       <div class="text-right mb-3">
-        <b-button variant="secondary" block to="/conta/produtos">
+        <v-btn color="secondary" block to="/conta/produtos">
           Produtos
-        </b-button>
-        <b-button variant="secondary" block to="/conta/pedidos">
+        </v-btn>
+        <v-btn color="secondary" block to="/conta/pedidos">
           Pedidos
-        </b-button>
+        </v-btn>
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@ export default {
   data () {
     return {
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Loja', active: true }
       ]
     }

@@ -1,6 +1,6 @@
 <template>
   <div class="create">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <EventForm v-if="event" :event="event" />
     <div v-else class="text-center">
       <b-spinner small label="Carregando..." />
@@ -14,7 +14,7 @@ export default {
     return {
       event: null,
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Eventos', to: '/conta/events' },
         { text: 'Editar', active: true }
       ]

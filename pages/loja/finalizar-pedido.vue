@@ -4,74 +4,80 @@
       :links="[['Loja', '/loja']]"
       active="Finalizar do pedido"
     />
-    <b-container class="pt-4 pb-5">
+    <v-container class="pt-4 pb-5">
       <div v-if="cart && cart.length">
         <h4 class="text-center">Finalize o pedido</h4>
         <p class="text-center mb-4">Confirme os dados abaixo para finalizar o pedido</p>
         <ValidationObserver v-slot="{ validate, invalid }">
           <b-form @submit.prevent="validate().then(save)">
-            <b-row>
-              <b-col md="6">
+            <v-row>
+              <v-col cols="12" md="6">
                 <b-form-group label="Nome *">
                   <validation-provider v-slot="{ errors }" name="nome" rules="required">
                     <b-form-input v-model="form.name" name="name" />
                     <span class="text-danger">{{ errors[0] }}</span>
                   </validation-provider>
                 </b-form-group>
-              </b-col>
-              <b-col md="6">
+              </v-col>
+              <v-col cols="12" md="6">
                 <b-form-group label="Organização">
                   <b-form-input v-model="form.organization" />
                 </b-form-group>
-              </b-col>
-              <b-col md="6">
+              </v-col>
+              <v-col cols="12" md="6">
                 <b-form-group label="CPF/CNPJ *">
                   <validation-provider v-slot="{ errors }" name="CPF/CNPJ" rules="required">
                     <b-form-input v-model="form.cpf_cnpj" v-mask="['###.###.###-##', '##.###.###/####-##']" name="cpf_cnpj" />
                     <span class="text-danger">{{ errors[0] }}</span>
                   </validation-provider>
                 </b-form-group>
-              </b-col>
-              <b-col md="6">
+              </v-col>
+              <v-col cols="12" md="6">
                 <b-form-group label="Telefone de contato *">
                   <validation-provider v-slot="{ errors }" name="telefone" rules="required">
                     <b-form-input v-model="form.phone" v-validate="'required'" v-mask="['(##) ####-####', '(##) #####-####']" name="phone" placeholder="(99) 99999-9999" />
                     <span class="text-danger">{{ errors[0] }}</span>
                   </validation-provider>
                 </b-form-group>
-              </b-col>
-              <b-col md="6">
+              </v-col>
+              <v-col cols="12" md="6">
                 <b-form-group label="Email *">
                   <validation-provider v-slot="{ errors }" name="email" rules="required|email">
                     <b-form-input v-model="form.email" name="email" />
                     <span class="text-danger">{{ errors[0] }}</span>
                   </validation-provider>
                 </b-form-group>
-              </b-col>
-              <b-col md="12">
+              </v-col>
+              <v-col cols="12" md="12">
                 <b-form-group label="Endereço de entrega *">
                   <AddressForm v-model="form.address" @input="setPostalCode" />
                 </b-form-group>
-              </b-col>
-            </b-row>
+              </v-col>
+              </v-col>
+              </v-col>
+              </v-col>
+              </v-col>
+              </v-col>
+              </v-col>
+            </v-row>
             <br>
             <Cart />
-            <b-button type="submit" size="lg" variant="success" block :disabled="invalid">
+            <v-btn type="submit" size="lg" color="success" block :disabled="invalid">
               FINALIZAR O PEDIDO
-            </b-button>
+            </v-btn>
           </b-form>
         </ValidationObserver>
       </div>
       <div v-else class="text-center my-5">
         <h4>Seu carrinho está vazio</h4>
-        <b-btn to="/loja" variant="light">
+        <v-btn to="/loja" color="light">
           Voltar para a loja
-        </b-btn>
-        <b-btn to="/conta/pedidos" variant="primary">
+        </v-btn>
+        <v-btn to="/conta/pedidos" color="primary">
           Ver meus pedidos
-        </b-btn>
+        </v-btn>
       </div>
-    </b-container>
+    </v-container>
   </div>
 </template>
 <script>

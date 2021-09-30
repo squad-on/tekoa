@@ -1,55 +1,55 @@
 <template>
   <ValidationObserver v-slot="{ validate, invalid }">
     <b-form @submit.prevent="validate().then(save)">
-      <b-row>
-        <b-col md="12">
+      <v-row>
+        <v-col cols="12" md="12">
           <b-form-group label="Nome do produto *">
             <validation-provider v-slot="{ errors }" name="produto" rules="required">
               <b-form-input v-model="form.name" name="name" />
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <b-form-group label="Resumo do produto *">
             <validation-provider v-slot="{ errors }" name="resumo do produto" rules="required">
               <b-form-textarea v-model="form.description" name="description" />
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <b-form-group label="Descrição completa">
             <quill-editor ref="quillEdit" v-model="form.content" />
             <input id="quillfile" type="file" hidden @change="quillUpload">
           </b-form-group>
-        </b-col>
-        <b-col md="6">
+        </v-col>
+        <v-col cols="12" md="6">
           <b-form-group label="Preço de venda *">
             <validation-provider v-slot="{ errors }" name="preço de venda" rules="required">
               <money v-model="form.price" class="form-control" />
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col md="6">
+        </v-col>
+        <v-col cols="12" md="6">
           <b-form-group label="Quantidade disponível para venda *">
             <validation-provider v-slot="{ errors }" name="estoque" rules="required">
               <b-form-input v-model="form.qtd" type="number" />
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <Upload v-model="form.pictures" type="images" label="Fotos do produto" multiple />
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <Upload v-model="form.documents" label="Documentos" type="documents" multiple edit-title />
-        </b-col>
-        <b-col md="12">
+        </v-col>
+        <v-col cols="12" md="12">
           <tags-form v-model="form.tags" :current-tags="currentTags" />
-        </b-col>
-      </b-row>
+        </v-col>
+      </v-row>
       <h4 class="mt-4">Dados de envio <small class="font-weight-light">(incluindo a embalagem)</small></h4>
       <hr class="mt-0">
       <b-form-group label="Tipos de envio possíveis *">
@@ -58,16 +58,16 @@
           <span class="text-danger">{{ errors[0] }}</span>
         </validation-provider>
       </b-form-group>
-      <b-row>
-        <b-col md="4">
+      <v-row>
+        <v-col cols="12" md="4">
           <b-form-group label="Formato da embalagem *">
             <validation-provider v-slot="{ errors }" name="formato" rules="required">
               <v-select v-model="form.format" :options="formatos" :reduce="item => item.value" label="text" @input="formatChanged" />
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col md="4">
+        </v-col>
+        <v-col cols="12" md="4">
           <b-form-group label="Peso *">
             <validation-provider v-slot="{ errors }" name="peso" :rules="weightValidation">
               <b-input-group append="kg">
@@ -76,10 +76,10 @@
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col md="4">
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12" md="4">
           <b-form-group label="Comprimento *">
             <validation-provider v-slot="{ errors }" name="comprimento" :rules="lengthValidation">
               <b-input-group append="cm">
@@ -88,8 +88,8 @@
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col v-if="form.format !== 2" md="4">
+        </v-col>
+        <v-col v-if="form.format !== 2" cols="12" md="4">
           <b-form-group label="Largura *">
             <validation-provider v-slot="{ errors }" name="largura" :rules="widthValidation">
               <b-input-group append="cm">
@@ -98,8 +98,8 @@
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col v-if="form.format === 1" md="4">
+        </v-col>
+        <v-col v-if="form.format === 1" cols="12" md="4">
           <b-form-group label="Altura *">
             <validation-provider v-slot="{ errors }" name="altura" rules="required|min_value:1|max_value:100">
               <b-input-group append="cm">
@@ -108,8 +108,8 @@
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-        <b-col v-if="form.format === 2" md="4">
+        </v-col>
+        <v-col v-if="form.format === 2" cols="12" md="4">
           <b-form-group label="Diametro *">
             <validation-provider v-slot="{ errors }" name="diametro" rules="required|min_value:5|max_value:91">
               <b-input-group append="cm">
@@ -118,14 +118,14 @@
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
           </b-form-group>
-        </b-col>
-      </b-row>
+        </v-col>
+      </v-row>
       <b-form-checkbox v-model="form.published" switch class="mt-3">
         Este produto está publicado para venda? <b>{{ form.published ? 'Sim' : 'Não' }}</b>
       </b-form-checkbox>
-      <b-button class="mb-4 mt-4" type="submit" variant="success" block :disabled="invalid">
+      <v-btn class="mb-4 mt-4" type="submit" color="success" block :disabled="invalid">
         Salvar
-      </b-button>
+      </v-btn>
     </b-form>
   </ValidationObserver>
 </template>

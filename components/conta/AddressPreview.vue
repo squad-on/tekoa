@@ -2,7 +2,7 @@
   <div v-if="validCoordinates">
     <div class="text-dark">
       <small v-if="address && address.description"><strong>{{ address.description }}</strong></small>
-      <small><br>Coordenadas: {{ address.location.coordinates.join(',') }} <a size="sm" variant="light" @click="show_map = !show_map"><strong>({{ show_map ? 'Esconder mapa' : 'Ver mapa' }})</strong></a></small>
+      <small><br>Coordenadas: {{ address.location.coordinates.join(',') }} <a size="sm" color="light" @click="show_map = !show_map"><strong>({{ show_map ? 'Esconder mapa' : 'Ver mapa' }})</strong></a></small>
     </div>
     <l-map v-if="show_map" :zoom="16" :center="address.location.coordinates" :options="{ scrollWheelZoom: false }" style="height: 30vw;" class="mb-4">
       <l-tile-layer :url="url" :attribution="attribution" />

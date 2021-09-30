@@ -20,7 +20,8 @@ module.exports = {
     'space-before-function-paren': 'off',
     'vue/max-attributes-per-line': 'off',
     'vue/no-v-html': 'off',
-    'arrow-parens': 'off'
+    'arrow-parens': 'off',
+    'vue/valid-v-slot': 'off'
   }
 
 }

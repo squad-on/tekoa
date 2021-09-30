@@ -4,7 +4,7 @@
     <div v-if="currentTags && currentTags.length">
       <small>ou selecione abaixo para adicionar:</small>
       <div>
-        <b-badge v-for="tag in currentTags" :key="tag" :variant="tags.includes(tag) ? 'primary' : 'secondary'" @click="addTag(tag)">{{ tag }}</b-badge>
+        <b-badge v-for="tag in currentTags" :key="tag" :color="tags.includes(tag) ? 'primary' : 'secondary'" @click="addTag(tag)">{{ tag }}</b-badge>
       </div>
     </div>
   </b-form-group>

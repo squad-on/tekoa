@@ -1,7 +1,7 @@
 <template>
-  <b-btn :to="'/loja/carrinho'" class="btn-cart" variant="primary" size="lg">
+  <v-btn :to="'/loja/carrinho'" class="btn-cart" color="primary" size="lg">
     <img src="~assets/img/icon-cart.svg" alt="Carrinho"> &nbsp; {{ cart.length }}
-  </b-btn>
+  </v-btn>
 </template>
 
 <script>

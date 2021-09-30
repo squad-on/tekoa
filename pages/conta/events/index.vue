@@ -1,11 +1,11 @@
 <template>
   <div class="events">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <div>
       <div class="text-right mb-3">
-        <b-button variant="success" to="/conta/events/new">
+        <v-btn color="success" to="/conta/events/new">
           <b-icon-plus /> Cadastrar
-        </b-button>
+        </v-btn>
       </div>
       <div v-if="events">
         <b-table v-if="events.length" :fields="table" :items="events" responsive="sm">
@@ -19,12 +19,12 @@
             <n-link class="btn btn-info btn-sm" :to="'/conta/events/' + data.item._id + '/edit'">
               <b-icon-pencil />
             </n-link>
-            <b-button variant="danger" size="sm" @click="remove(data.item)">
+            <v-btn color="danger" size="sm" @click="remove(data.item)">
               <b-icon-trash />
-            </b-button>
+            </v-btn>
           </template>
         </b-table>
-        <b-alert v-else show variant="dark" class="text-center">Nenhum item encontrado</b-alert>
+        <b-alert v-else show color="dark" class="text-center">Nenhum item encontrado</b-alert>
       </div>
       <div v-else class="text-center">
         <b-spinner small label="Carregando..." />
@@ -42,7 +42,7 @@ export default {
     return {
       events: null,
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Reconhecimento', active: true }
       ],
       table: [

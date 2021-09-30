@@ -3,10 +3,10 @@
     <div v-for="(address, index) in value" :key="index" class="mb-3">
       <AddressPreview :address="address" />
       <span v-if="value && value.length > 1">
-        <b-btn v-if="index === 0" variant="success" size="sm" disabled>Endereço padrão</b-btn>
-        <b-btn v-else variant="light" size="sm" @click="setDefault(index)">Marcar como padrão</b-btn>
+        <v-btn v-if="index === 0" color="success" size="sm" disabled>Endereço padrão</v-btn>
+        <v-btn v-else color="light" size="sm" @click="setDefault(index)">Marcar como padrão</v-btn>
       </span>
-      <b-btn variant="danger" size="sm" @click="remove(index)">Remover</b-btn>
+      <v-btn color="danger" size="sm" @click="remove(index)">Remover</v-btn>
     </div>
     <div v-if="new_address">
       <AddressForm v-model="new_address" @input="add" />

@@ -1,6 +1,6 @@
 <template>
   <div class="create">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <UserForm v-if="user" :user="user" />
     <div v-else class="text-center">
       <b-spinner small label="Carregando..." />
@@ -15,7 +15,7 @@ export default {
     return {
       user: null,
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Usuários', to: '/conta/users' },
         { text: 'Editar', active: true }
       ]

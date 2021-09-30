@@ -49,9 +49,9 @@
               <strong v-if="!loading_shipping">{{ (item.product.price * item.qtd) + (item.shipping ? item.shipping.price * item.qtd : 0) | moeda }}</strong>
             </td>
             <td class="text-center">
-              <b-button size="sm" variant="light" rel="tooltip" data-placement="left" title="Remover do carrinho" @click="removeFromCart(index)">
+              <v-btn size="sm" color="light" rel="tooltip" data-placement="left" title="Remover do carrinho" @click="removeFromCart(index)">
                 <b-icon-trash />
-              </b-button>
+              </v-btn>
             </td>
           </tr>
         </tbody>
@@ -83,12 +83,12 @@
     </div>
     <div v-else class="text-center my-5">
       <h4>Seu carrinho está vazio</h4>
-      <b-btn to="/loja" variant="light">
+      <v-btn to="/loja" color="light">
         Voltar para a loja
-      </b-btn>
-      <b-btn to="/conta/pedidos" variant="primary">
+      </v-btn>
+      <v-btn to="/conta/pedidos" color="primary">
         Ver meus pedidos
-      </b-btn>
+      </v-btn>
     </div>
   </div>
 </template>

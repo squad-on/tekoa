@@ -1,6 +1,6 @@
 <template>
   <div class="create">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <ProductForm v-if="product" :product="product" />
     <div v-else class="text-center">
       <b-spinner small label="Carregando..." />
@@ -14,7 +14,7 @@ export default {
     return {
       product: null,
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Loja', to: '/conta/loja' },
         { text: 'Produtos', to: '/conta/produtos' },
         { text: 'Editar', active: true }

@@ -1,6 +1,6 @@
 <template>
   <div class="orders">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <div>
       <div v-if="orders">
         <table v-if="orders.length" class="table b-table b-table-stacked-sm">
@@ -13,13 +13,13 @@
           </thead>
           <tbody>
             <tr v-for="order in orders" :key="order._id">
-              <td><b-btn size="sm" :class="order.status" :to="'/conta/pedidos/' + order._id"><strong>#{{ order.code }}</strong> <small>({{ optionText(order.status, 'order-status') }})</small></b-btn></td>
+              <td><v-btn size="sm" :class="order.status" :to="'/conta/pedidos/' + order._id"><strong>#{{ order.code }}</strong> <small>({{ optionText(order.status, 'order-status') }})</small></v-btn></td>
               <td>{{ $moment(order.createdAt).format("DD/MM/YYYY") }}</td>
               <td>{{ order.items.reduce((a, b) => a + b.total, 0) | moeda }}</td>
             </tr>
           </tbody>
         </table>
-        <b-alert v-else show variant="dark" class="text-center">Nenhum item encontrado</b-alert>
+        <b-alert v-else show color="dark" class="text-center">Nenhum item encontrado</b-alert>
       </div>
       <div v-else class="text-center">
         <b-spinner small label="Carregando..." />
@@ -33,7 +33,7 @@ export default {
   layout: 'conta',
   data () {
     let breadcrumb = [
-      { text: 'Painel', to: '/conta' },
+      { text: 'Dashboard', to: '/conta' },
       { text: 'Loja', to: '/conta/loja' },
       { text: 'Pedidos', active: true }
     ]

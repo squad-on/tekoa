@@ -1,8 +1,8 @@
 <template>
   <div class="address-form">
     <AddressPreview :address="value" />
-    <b-btn v-if="currentAddressFilled" variant="light" @click="show_modal = !show_modal"><client-only><b-icon-pencil /></client-only> Mudar endereço</b-btn>
-    <b-btn v-else variant="success" @click="show_modal = !show_modal"><client-only><b-icon-plus /></client-only> Adicionar endereço</b-btn>
+    <v-btn v-if="currentAddressFilled" color="light" @click="show_modal = !show_modal"><client-only><b-icon-pencil /></client-only> Mudar endereço</v-btn>
+    <v-btn v-else color="success" @click="show_modal = !show_modal"><client-only><b-icon-plus /></client-only> Adicionar endereço</v-btn>
     <b-modal v-model="show_modal" title="Localização" hide-footer hide-header size="lg">
       <div v-if="show_auto_complete">
         <div v-if="!addressFilled">
@@ -10,8 +10,8 @@
           <b-form-input v-model="address_input" class="input-lg" @keyup.enter="searchByAddress" />
           <small>Ex: rua das nascentes, alto paraíso, goiás</small>
           <p class="text-center mt-3">
-            <b-btn variant="primary" @click="getLocation()">Buscar pelo GPS</b-btn>
-            <b-btn v-if="address_input" variant="primary" @click="searchByAddress"><b-icon-search /> Buscar pelo endereço</b-btn>
+            <v-btn color="primary" @click="getLocation()">Buscar pelo GPS</v-btn>
+            <v-btn v-if="address_input" color="primary" @click="searchByAddress"><b-icon-search /> Buscar pelo endereço</v-btn>
           </p>
           <p v-if="loading_gps" class="text-center">
             <b-spinner small /> Buscando dados do GPS...
@@ -26,11 +26,11 @@
                   {{ a.description }}
                 </td>
                 <td class="text-right">
-                  <b-btn variant="success" size="sm" @click="setAddressForm(a)">Selecionar</b-btn>
+                  <v-btn color="success" size="sm" @click="setAddressForm(a)">Selecionar</v-btn>
                 </td>
               </tr>
             </table>
-            <b-btn variant="light" @click="showAutoComplete()">Nenhum desses é meu endereço</b-btn>
+            <v-btn color="light" @click="showAutoComplete()">Nenhum desses é meu endereço</v-btn>
           </div>
           <div v-else>
             <p>
@@ -51,8 +51,8 @@
                 <small>Coordenadas: {{ address.location.coordinates.join(',') }}</small>
               </p>
             </div>
-            <b-btn variant="light" size="lg" @click="showAutoComplete()">Não</b-btn>
-            <b-btn variant="success" size="lg" @click="setAddressForm(address)">Sim</b-btn>
+            <v-btn color="light" size="lg" @click="showAutoComplete()">Não</v-btn>
+            <v-btn color="success" size="lg" @click="setAddressForm(address)">Sim</v-btn>
           </div>
         </div>
       </div>
@@ -61,62 +61,62 @@
           <b-form @submit.prevent="validate().then(confirmAddress)">
             <div class="form-address">
               <p class="mb-4"><strong>Complete os dados e confirme o endereço:</strong></p>
-              <b-row>
-                <b-col sm="3">
+              <v-row>
+                <v-col cols="12" sm="3">
                   <b-form-group label="CEP *">
                     <validation-provider v-slot="{ errors }" name="CEP" rules="required|min:9|max:9">
                       <b-form-input v-model="form.postal_code" v-mask="'#####-###'" />
                       <span class="text-danger">{{ errors[0] }}</span>
                     </validation-provider>
                   </b-form-group>
-                </b-col>
-              </b-row>
-              <b-row>
-                <b-col sm="6">
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" sm="6">
                   <b-form-group label="Estado *">
                     <validation-provider v-slot="{ errors }" name="estado" rules="required">
                       <b-form-input v-model="form.uf" class="form-control" />
                       <span class="text-danger">{{ errors[0] }}</span>
                     </validation-provider>
                   </b-form-group>
-                </b-col>
-                <b-col sm="6">
+                </v-col>
+                <v-col cols="12" sm="6">
                   <b-form-group label="Cidade *">
                     <validation-provider v-slot="{ errors }" name="cidade" rules="required">
                       <b-form-input v-model="form.city" class="form-control" />
                       <span class="text-danger">{{ errors[0] }}</span>
                     </validation-provider>
                   </b-form-group>
-                </b-col>
-                <b-col sm="12">
+                </v-col>
+                <v-col cols="12" sm="12">
                   <b-form-group label="Endereço/Rua/Av *">
                     <validation-provider v-slot="{ errors }" name="endereço" rules="required">
                       <b-form-input v-model="form.street" name="street" />
                       <span class="text-danger">{{ errors[0] }}</span>
                     </validation-provider>
                   </b-form-group>
-                </b-col>
-                <b-col sm="9">
+                </v-col>
+                <v-col cols="12" sm="9">
                   <b-form-group label="Bairro">
                     <b-form-input v-model="form.neighborhood" name="neighborhood" />
                   </b-form-group>
-                </b-col>
-                <b-col sm="3">
+                </v-col>
+                <v-col cols="12" sm="3">
                   <b-form-group label="Número">
                     <b-form-input v-model="form.number" name="number" />
                   </b-form-group>
-                </b-col>
-                <b-col sm="9">
+                </v-col>
+                <v-col cols="12" sm="9">
                   <b-form-group label="Complemento">
                     <b-form-input v-model="form.complement" name="complement" />
                   </b-form-group>
-                </b-col>
-              </b-row>
+                </v-col>
+              </v-row>
             </div>
-            <b-btn variant="light" @click="showAutoComplete()">Mudar localização</b-btn>
-            <b-btn type="submit" variant="success" size="lg" :disabled="invalid">
+            <v-btn color="light" @click="showAutoComplete()">Mudar localização</v-btn>
+            <v-btn type="submit" color="success" size="lg" :disabled="invalid">
               Confirmar endereço
-            </b-btn>
+            </v-btn>
           </b-form>
         </ValidationObserver>
       </div>

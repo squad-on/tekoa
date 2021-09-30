@@ -8,7 +8,7 @@
           <div>
             Página não encontrada
           </div>
-          <b-button class="mt-3" @click="$router.go(-1)">Voltar</b-button>
+          <v-btn class="mt-3" @click="$router.go(-1)">Voltar</v-btn>
         </div>
       </section>
     </div>

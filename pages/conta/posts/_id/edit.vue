@@ -1,6 +1,6 @@
 <template>
   <div class="create">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <PostForm v-if="post" :post="post" />
     <div v-else class="text-center">
       <b-spinner small label="Carregando..." />
@@ -14,7 +14,7 @@ export default {
     return {
       post: null,
       breadcrumb: [
-        { text: 'Painel', to: '/conta' },
+        { text: 'Dashboard', to: '/conta' },
         { text: 'Desafios', to: '/conta/posts' },
         { text: 'Editar', active: true }
       ]

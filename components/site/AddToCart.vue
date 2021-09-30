@@ -12,10 +12,10 @@
             <span class="plus" @click="add()">+</span>
           </div>
         </div>
-        <b-button variant="primary" size="sm" @click="addToCart(product)">
+        <v-btn color="primary" size="sm" @click="addToCart(product)">
           <img src="~assets/img/icon-cart.svg" alt="Adicionar ao carrinho"> <b-icon-chevron-right />
           <small v-if="alreadyOnCart > 0" class="btn-cart-counter">{{ alreadyOnCart }}</small>
-        </b-button>
+        </v-btn>
       </div>
       <div class="info">
         <p v-if="product.box_qtd && product.box_qtd.value"><strong>{{ product.box_qtd.value }} {{ product.box_qtd.unit }}</strong> por caixa/embalagem</p>

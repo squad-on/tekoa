@@ -24,7 +24,6 @@ export default {
     '~plugins/vue2-filters.js',
     '~plugins/filters.js',
     '~plugins/url.js',
-    '~plugins/bootstrap-vue.js',
     { src: '~plugins/quill.js', ssr: false },
     { src: '~/plugins/v-calendar', ssr: false },
     { src: '~/plugins/v-money.js', ssr: false },
@@ -42,8 +41,6 @@ export default {
     '@nuxtjs/vuetify'
   ],
   modules: [
-    // Doc: https://bootstrap-vue.js.org
-    ['bootstrap-vue/nuxt'],
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
@@ -63,7 +60,7 @@ export default {
         }
       }
     ],
-    'nuxt-vue-select',
+    // 'nuxt-vue-select',
     'vue-scrollto/nuxt',
     'nuxt-leaflet'
   ],
@@ -82,11 +79,6 @@ export default {
       }
     },
     scopeKey: 'role'
-  },
-  bootstrapVue: {
-    css: false,
-    bvCSS: false,
-    icons: true
   },
   toast: {
     duration: 7000,
@@ -125,11 +117,13 @@ export default {
     customVariables: ['~/assets/css/variables.sass'],
     treeShake: true,
     theme: {
-      light: true, // you don't actually need this line as it's for default
+      dark: true, // you don't actually need this line as it's for default
       themes: {
-        light: {
-          primary: '#5682ca',
-          success: '#5682ca'
+        dark: {
+          background: '#151621',
+          primary: '#FF012F',
+          secondary: '#4F516F',
+          tertiary: '#1A1C28'
         }
       }
     }

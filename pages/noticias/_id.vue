@@ -7,7 +7,7 @@
     />
     <section class="mb-5">
       <Banners v-if="post.picture" :items="[post.picture]" />
-      <b-container>
+      <v-container>
         <h1 class="title pt-5">{{ post.title }}</h1>
         <div class="mb-3">
           <tags :tags="post.tags" @click="filterbyTag" />
@@ -18,7 +18,7 @@
           <Documents :documents="post.documents" />
           <share />
         </div>
-      </b-container>
+      </v-container>
     </section>
   </div>
 </template>

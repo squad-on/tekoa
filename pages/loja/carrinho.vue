@@ -4,13 +4,13 @@
       :links="[['Loja', '/loja']]"
       active="Resumo do pedido"
     />
-    <b-container class="pt-4 pb-5">
+    <v-container class="pt-4 pb-5">
       <Cart />
       <div v-if="cart && cart.length" class="text-right">
-        <b-button to="/loja" variant="secondary">Continuar comprando</b-button>
-        <b-button variant="primary" size="lg" to="/loja/finalizar-pedido">Finalizar pedido</b-button>
+        <v-btn to="/loja" color="secondary">Continuar comprando</v-btn>
+        <v-btn color="primary" size="lg" to="/loja/finalizar-pedido">Finalizar pedido</v-btn>
       </div>
-    </b-container>
+    </v-container>
   </div>
 </template>
 <script>

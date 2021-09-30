@@ -43,9 +43,9 @@
           </b-form-group>
         </b-tab>
       </b-tabs>
-      <b-button type="submit" variant="success" block :disabled="invalid">
+      <v-btn type="submit" color="success" block :disabled="invalid">
         Salvar
-      </b-button>
+      </v-btn>
     </b-form>
   </ValidationObserver>
 </template>

@@ -5,7 +5,7 @@
       <div class="flex-grow">
         <p v-for="attr in attributes" :key="attr.key" class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1">
           <n-link :to="'/agenda/' + attr.customData._id">
-            <b-badge pill variant="success">{{ attr.customData.title }}</b-badge>
+            <b-badge pill color="success">{{ attr.customData.title }}</b-badge>
           </n-link>
         </p>
       </div>

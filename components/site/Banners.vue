@@ -6,8 +6,8 @@
           <h3 v-if="item.title" class="title">{{ item.title }}</h3>
           <p v-if="item.description" class="mb-0">{{ (item.description) | truncate(250) }}</p>
           <template v-if="item.link">
-            <b-btn v-if="item.link.startsWith('http')" :href="item.link" target="_blank" variant="secondary" class="mt-md-4 btn-home">{{ item.link_title || 'Saiba mais' }}</b-btn>
-            <b-btn v-else :to="item.link" variant="secondary" class="mt-md-4 btn-home">{{ item.link_title || 'Saiba mais' }}</b-btn>
+            <v-btn v-if="item.link.startsWith('http')" :href="item.link" target="_blank" color="secondary" class="mt-md-4 btn-home">{{ item.link_title || 'Saiba mais' }}</v-btn>
+            <v-btn v-else :to="item.link" color="secondary" class="mt-md-4 btn-home">{{ item.link_title || 'Saiba mais' }}</v-btn>
           </template>
         </b-carousel-slide>
       </template>

@@ -1,6 +1,6 @@
 <template>
   <div class="profile">
-    <b-breadcrumb :items="breadcrumb" />
+    <AdminBreadcrumb :items="breadcrumb" />
     <UserForm v-if="profile" :user="profile" />
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
   data () {
     return {
       breadcrumb: [
-        { text: this.$auth.user.role === 'user' ? 'Minha conta' : 'Painel', to: '/conta' },
+        { text: this.$auth.user.role === 'user' ? 'Minha conta' : 'Dashboard', to: '/conta' },
         { text: 'Meu perfil', active: true }
       ],
       profile: null

@@ -23,18 +23,18 @@
               </td>
               <td v-if="editDescription" />
               <td class="text-md-right">
-                <b-btn variant="light" size="sm" @click="deleteFile(index)">
+                <v-btn color="light" size="sm" @click="deleteFile(index)">
                   <b-icon-trash />
-                </b-btn>
+                </v-btn>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <b-button v-if="is_loading" variant="secondary" disabled>
+      <v-btn v-if="is_loading" color="secondary" disabled>
         <b-spinner small />
         Enviando arquivos...
-      </b-button>
+      </v-btn>
       <a v-else-if="avatar" @click="upload">
         <b-avatar
           size="6rem"
@@ -43,10 +43,10 @@
           <template #badge><b-icon-camera /></template>
         </b-avatar>
       </a>
-      <b-btn v-else variant="success" @click="upload">
+      <v-btn v-else color="success" @click="upload">
         <b-icon-upload />
         Enviar {{ type === 'images' ? 'image' + (multiple ? 'ns' : 'm') : 'arquivo' + (multiple ? 's' : '') }}
-      </b-btn>
+      </v-btn>
       <input
         v-show="false"
         :ref="'uploads-input-' + inputId"

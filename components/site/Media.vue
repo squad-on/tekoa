@@ -11,22 +11,22 @@
           Editora/Fonte: <strong>{{ media.publishing_house }}</strong>
         </p>
         <p v-if="media.category !== 'Notícias' && media.category !== 'Vídeos'">
-          <b-button v-if="media.url" :href="media.url" target="_blank" variant="primary">Acessar Conteúdo</b-button>
+          <v-btn v-if="media.url" :href="media.url" target="_blank" color="primary">Acessar Conteúdo</v-btn>
           <Documents :documents="media.documents" label="Baixar documentos" />
         </p>
         <div class="tags-component">
-          <b-button v-for="tag in media.tags" :key="tag._id" :to="'/biblioteca?tag=' + tag" size="sm" class="mr-1">
+          <v-btn v-for="tag in media.tags" :key="tag._id" :to="'/biblioteca?tag=' + tag" size="sm" class="mr-1">
             {{ tag }}
-          </b-button>
+          </v-btn>
         </div>
         <share />
       </div>
     </div>
     <br>
     <div class="text-center">
-      <b-button variant="secondary" @click="$router.go(-1)">
+      <v-btn color="secondary" @click="$router.go(-1)">
         Voltar à biblioteca
-      </b-button>
+      </v-btn>
     </div>
   </div>
 </template>
