@@ -16,7 +16,7 @@
           </v-btn>
         </div>
         <v-row>
-          <v-col cols="12" md="6" class="mb-3">
+          <v-col cols="12" md="4">
             <v-card color="#282A38">
               <v-img :src="require('~/assets/img/trilhas.jpg')" alt="Seja um Senior!" />
               <v-card-text>
@@ -26,7 +26,7 @@
               </v-card-text>
             </v-card>
           </v-col>
-          <v-col>
+          <v-col cols="12" md="4">
             <v-card color="#282A38">
               <v-img :src="require('~/assets/img/trilhas.jpg')" alt="Trilhe sua evolução" />
               <v-card-text>
@@ -36,25 +36,13 @@
               </v-card-text>
             </v-card>
           </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="12" md="6" class="mb-3">
+          <v-col cols="12" md="4">
             <v-card color="#282A38">
               <v-img :src="require('~/assets/img/trilhas.jpg')" alt="Desafie-se!" />
               <v-card-text>
                 <h5>Desafie-se!</h5>
                 <div class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
                 <n-link to="/noticias" class="stretched-link hidden" />
-              </v-card-text>
-            </v-card>
-          </v-col>
-          <v-col>
-            <v-card color="#282A38">
-              <v-img :src="require('~/assets/img/trilhas.jpg')" alt="Seja reconhecido!" />
-              <v-card-text>
-                <h5>Seja reconhecido!</h5>
-                <div class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                <n-link to="/agenda" class="stretched-link hidden" />
               </v-card-text>
             </v-card>
           </v-col>

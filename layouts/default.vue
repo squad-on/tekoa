@@ -11,23 +11,6 @@
             />
           </n-link>
         </div>
-        <v-list dark nav>
-          <v-list-item class="mb-0">
-            <v-list-item-avatar color="#4F516F" size="58">
-              <v-img v-if="$auth.user && $auth.user.picture && $auth.user.picture.url" :src="$auth.user.picture.url" />
-              <v-icon v-else>mdi-account</v-icon>
-            </v-list-item-avatar>
-            <v-list-item-content>
-              <v-list-item-title v-if="$auth.user && $auth.user.name" class="text-h6">
-                {{ $auth.user.name }}
-              </v-list-item-title>
-              <v-list-item-title v-else class="text-h6">
-                Entre com sua conta
-              </v-list-item-title>
-              <v-list-item-subtitle v-if="$auth.user">{{ $auth.user.email }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
         <Menu />
       </v-navigation-drawer>
 

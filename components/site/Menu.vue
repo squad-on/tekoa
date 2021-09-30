@@ -1,22 +1,58 @@
 <template>
-  <v-list nav class="pb-0 mt-3">
-    <v-list-item to="/">
-      <v-list-item-icon>
-        <v-icon>mdi-view-dashboard</v-icon>
-      </v-list-item-icon>
-      <v-list-item-content>
-        <v-list-item-title>Dashboard</v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
-    <v-list-item v-for="item in menus" :key="item._id" v-bind="getLink(item)">
-      <v-list-item-icon>
-        <v-icon>mdi-information-variant</v-icon>
-      </v-list-item-icon>
-      <v-list-item-content>
-        <v-list-item-title>{{ item.name }}</v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
-  </v-list>
+  <div class="pl-3">
+    <v-list dark nav>
+      <v-list-item class="mb-0">
+        <v-list-item-avatar color="#4F516F" size="58">
+          <v-img v-if="$auth.user && $auth.user.picture && $auth.user.picture.url" :src="$auth.user.picture.url" />
+          <v-icon v-else>mdi-account</v-icon>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title v-if="$auth.user && $auth.user.name" class="text-h6">
+            {{ $auth.user.name }}
+          </v-list-item-title>
+          <v-list-item-title v-else class="text-h6">
+            Entre com sua conta
+          </v-list-item-title>
+          <v-list-item-subtitle v-if="$auth.user">{{ $auth.user.email }}</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+    <v-list nav class="pb-0 mt-3" rounded dense>
+      <v-list-item to="/" class="ml-n10 pl-12">
+        <v-list-item-icon>
+          <v-icon>mdi-view-dashboard</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Dashboard</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item to="/biblioteca" class="ml-n10 pl-12">
+        <v-list-item-icon>
+          <v-icon>mdi-hiking</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Trilhas</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item to="/noticias" class="ml-n10 pl-12">
+        <v-list-item-icon>
+          <v-icon>mdi-radar</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Desafios</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-list-item v-for="item in menus" :key="item._id" v-bind="getLink(item)" class="ml-n10 pl-12">
+        <v-list-item-icon>
+          <v-icon>mdi-information-variant</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>{{ item.name }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+  </div>
 </template>
 <script>
 export default {
