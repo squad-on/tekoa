@@ -1,32 +1,36 @@
 <template>
   <div class="pages">
     <AdminBreadcrumb :items="breadcrumb" />
-    <div>
-      <div class="text-right mb-3">
-        <v-btn color="success" to="/conta/pages/new">
-          <b-icon-plus /> Cadastrar
-        </v-btn>
-      </div>
-      <div v-if="pages">
-        <v-data-table v-if="pages.length" :headers="table" :items="pages" light>
-          <template v-slot:item.slug="{ item }">
-            <a :href="'/' + item.slug" target="_blank">{{ '/' + item.slug }}</a>
-          </template>
-          <template v-slot:item.actions="{ item }">
-            <v-btn icon sm :to="'/conta/pages/' + item.slug + '/edit'">
-              <v-icon>mdi-pencil-outline</v-icon>
+    <v-btn
+      to="/conta/pages/new"
+      fab
+      bottom
+      right
+      fixed
+      color="success"
+    >
+      <v-icon dark>mdi-plus</v-icon>
+    </v-btn>
+    <div v-if="pages">
+      <v-list v-if="pages.length" color="tertiary">
+        <v-list-item v-for="page in pages" :key="page._id" :to="'/conta/pages/' + page.slug + '/edit'">
+          <v-list-item-content>
+            <v-list-item-title>{{ page.title }}</v-list-item-title>
+            <v-list-item-subtitle>{{ '/' + page.slug }}</v-list-item-subtitle>
+          </v-list-item-content>
+          <v-list-item-action>
+            <v-btn icon>
+              <v-icon>mdi-chevron-right</v-icon>
             </v-btn>
-            <v-btn icon size="sm" @click="remove(item)">
-              <v-icon>mdi-delete</v-icon>
-            </v-btn>
-          </template>
-        </v-data-table>
-        <b-alert v-else show color="dark" class="text-center">Nenhum item encontrado</b-alert>
-      </div>
-      <div v-else class="text-center">
-        <b-spinner small label="Carregando..." />
-      </div>
+          </v-list-item-action>
+        </v-list-item>
+      </v-list>
+      <v-alert v-else dark color="tertiary" class="text-center">Nenhum item encontrado</v-alert>
     </div>
+    <v-skeleton-loader
+      v-else
+      type="list-item-two-line@3"
+    />
   </div>
 </template>
 
@@ -55,16 +59,6 @@ export default {
   methods: {
     async list () {
       this.pages = await this.$axios.$get('/api/pages')
-    },
-    remove (page) {
-      this.$bvModal.msgBoxConfirm('Tem certeza que deseja excluír este item?').then(async confirmed => {
-        if (confirmed) {
-          await this.$axios.delete('/api/pages/' + page.slug).then(() => {
-            this.list()
-            this.$toast.success('Página removida com sucesso!')
-          })
-        }
-      })
     }
   }
 }

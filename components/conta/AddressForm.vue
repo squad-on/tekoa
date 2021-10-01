@@ -7,14 +7,14 @@
       <div v-if="show_auto_complete">
         <div v-if="!addressFilled">
           <p><strong>Digite seu endereço para buscar a localização:</strong></p>
-          <b-form-input v-model="address_input" class="input-lg" @keyup.enter="searchByAddress" />
+          <v-text-field outlined v-model="address_input" class="input-lg" @keyup.enter="searchByAddress" />
           <small>Ex: rua das nascentes, alto paraíso, goiás</small>
           <p class="text-center mt-3">
             <v-btn color="primary" @click="getLocation()">Buscar pelo GPS</v-btn>
             <v-btn v-if="address_input" color="primary" @click="searchByAddress"><b-icon-search /> Buscar pelo endereço</v-btn>
           </p>
           <p v-if="loading_gps" class="text-center">
-            <b-spinner small /> Buscando dados do GPS...
+            <v-progress-circular indeterminate small /> Buscando dados do GPS...
           </p>
         </div>
         <div v-else class="text-center">
@@ -58,58 +58,58 @@
       </div>
       <div v-else>
         <ValidationObserver v-slot="{ validate, invalid }">
-          <b-form @submit.prevent="validate().then(confirmAddress)">
+          <v-form @submit.prevent="validate().then(confirmAddress)">
             <div class="form-address">
               <p class="mb-4"><strong>Complete os dados e confirme o endereço:</strong></p>
               <v-row>
                 <v-col cols="12" sm="3">
-                  <b-form-group label="CEP *">
+                  <v-form-group label="CEP *">
                     <validation-provider v-slot="{ errors }" name="CEP" rules="required|min:9|max:9">
-                      <b-form-input v-model="form.postal_code" v-mask="'#####-###'" />
+                      <v-text-field outlined v-model="form.postal_code" v-mask="'#####-###'" />
                       <span class="text-danger">{{ errors[0] }}</span>
                     </validation-provider>
-                  </b-form-group>
+                  </v-form-group>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" sm="6">
-                  <b-form-group label="Estado *">
+                  <v-form-group label="Estado *">
                     <validation-provider v-slot="{ errors }" name="estado" rules="required">
-                      <b-form-input v-model="form.uf" class="form-control" />
+                      <v-text-field outlined v-model="form.uf" class="form-control" />
                       <span class="text-danger">{{ errors[0] }}</span>
                     </validation-provider>
-                  </b-form-group>
+                  </v-form-group>
                 </v-col>
                 <v-col cols="12" sm="6">
-                  <b-form-group label="Cidade *">
+                  <v-form-group label="Cidade *">
                     <validation-provider v-slot="{ errors }" name="cidade" rules="required">
-                      <b-form-input v-model="form.city" class="form-control" />
+                      <v-text-field outlined v-model="form.city" class="form-control" />
                       <span class="text-danger">{{ errors[0] }}</span>
                     </validation-provider>
-                  </b-form-group>
+                  </v-form-group>
                 </v-col>
                 <v-col cols="12" sm="12">
-                  <b-form-group label="Endereço/Rua/Av *">
+                  <v-form-group label="Endereço/Rua/Av *">
                     <validation-provider v-slot="{ errors }" name="endereço" rules="required">
-                      <b-form-input v-model="form.street" name="street" />
+                      <v-text-field outlined v-model="form.street" name="street" />
                       <span class="text-danger">{{ errors[0] }}</span>
                     </validation-provider>
-                  </b-form-group>
+                  </v-form-group>
                 </v-col>
                 <v-col cols="12" sm="9">
-                  <b-form-group label="Bairro">
-                    <b-form-input v-model="form.neighborhood" name="neighborhood" />
-                  </b-form-group>
+                  <v-form-group label="Bairro">
+                    <v-text-field outlined v-model="form.neighborhood" name="neighborhood" />
+                  </v-form-group>
                 </v-col>
                 <v-col cols="12" sm="3">
-                  <b-form-group label="Número">
-                    <b-form-input v-model="form.number" name="number" />
-                  </b-form-group>
+                  <v-form-group label="Número">
+                    <v-text-field outlined v-model="form.number" name="number" />
+                  </v-form-group>
                 </v-col>
                 <v-col cols="12" sm="9">
-                  <b-form-group label="Complemento">
-                    <b-form-input v-model="form.complement" name="complement" />
-                  </b-form-group>
+                  <v-form-group label="Complemento">
+                    <v-text-field outlined v-model="form.complement" name="complement" />
+                  </v-form-group>
                 </v-col>
               </v-row>
             </div>
@@ -117,7 +117,7 @@
             <v-btn type="submit" color="success" size="lg" :disabled="invalid">
               Confirmar endereço
             </v-btn>
-          </b-form>
+          </v-form>
         </ValidationObserver>
       </div>
     </b-modal>
@@ -226,7 +226,7 @@ export default {
           })
         }
       }).catch(e => {
-        this.$toast.error('Não foi possível encontrar seu endereço. Verifique o que foi digitado e tente novamente.')
+        this.$notifier.error('Não foi possível encontrar seu endereço. Verifique o que foi digitado e tente novamente.')
       })
     },
     updateMarker(location) {
@@ -284,7 +284,7 @@ export default {
       this.show_auto_complete = true
     },
     locationError() {
-      this.$toast.error('Não foi possível encontrar seu endereço automaticamente.')
+      this.$notifier.error('Não foi possível encontrar seu endereço automaticamente.')
       this.loading_gps = false
     },
     cb () {

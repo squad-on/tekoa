@@ -1,14 +1,14 @@
 <template>
   <ValidationObserver v-slot="{ validate, invalid }">
-    <b-form @submit.prevent="validate().then(save)">
+    <v-form @submit.prevent="validate().then(save)">
       <v-row>
         <v-col cols="12" md="12">
-          <b-form-group label="Dê um nome para o evento *">
+          <v-form-group label="Dê um nome para o evento *">
             <validation-provider v-slot="{ errors }" name="título" rules="required">
-              <b-form-input v-model="form.title" name="title" />
+              <v-text-field outlined v-model="form.title" name="title" />
               <span class="text-danger">{{ errors[0] }}</span>
             </validation-provider>
-          </b-form-group>
+          </v-form-group>
         </v-col>
         <v-col cols="12" md="6">
           <date-time-form v-model="form.start_at" label="Começa em" />
@@ -17,15 +17,15 @@
           <date-time-form v-model="form.end_at" label="Termina em" />
         </v-col>
         <v-col cols="12" md="12">
-          <b-form-group label="Introdução" description="Uma descrição curta de até 160 caracteres">
-            <b-form-textarea v-model="form.description" name="description" />
-          </b-form-group>
+          <v-form-group label="Introdução" description="Uma descrição curta de até 160 caracteres">
+            <v-textarea outlined v-model="form.description" name="description" />
+          </v-form-group>
         </v-col>
         <v-col cols="12" md="12">
-          <b-form-group label="Descrição completa">
+          <v-form-group label="Descrição completa">
             <quill-editor ref="quillEdit" v-model="form.content" />
             <input id="quillfile" type="file" hidden @change="quillUpload">
-          </b-form-group>
+          </v-form-group>
         </v-col>
         <v-col cols="12" md="12">
           <Upload v-model="form.picture" type="images" label="Foto de capa" />
@@ -40,7 +40,7 @@
       <v-btn class="mb-4 mt-4" type="submit" color="success" block :disabled="invalid">
         Salvar
       </v-btn>
-    </b-form>
+    </v-form>
   </ValidationObserver>
 </template>
 
@@ -85,13 +85,13 @@ export default {
       if (this.event) {
         const event = await this.$axios.$put('/api/events/' + this.event._id, this.form)
         if (event) {
-          this.$toast.success('Evento atualizado com sucesso!')
+          this.$notifier.success('Evento atualizado com sucesso!')
           this.$router.push('/conta/events')
         }
       } else {
         const event = await this.$axios.$post('/api/events', this.form)
         if (event) {
-          this.$toast.success('Evento cadastrado com sucesso!')
+          this.$notifier.success('Evento cadastrado com sucesso!')
           this.$router.push('/conta/events')
         }
       }

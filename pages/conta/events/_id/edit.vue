@@ -3,7 +3,7 @@
     <AdminBreadcrumb :items="breadcrumb" />
     <EventForm v-if="event" :event="event" />
     <div v-else class="text-center">
-      <b-spinner small label="Carregando..." />
+      <v-progress-circular indeterminate small label="Carregando..." />
     </div>
   </div>
 </template>

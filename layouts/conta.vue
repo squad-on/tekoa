@@ -12,7 +12,6 @@
       </div>
       <AdminMenu />
     </v-navigation-drawer>
-
     <v-app-bar dark hide-on-scroll color="#1A1C28" class="d-lg-none">
       <v-img
         title="Prolancer.guru"
@@ -23,9 +22,8 @@
       <v-spacer />
       <v-app-bar-nav-icon @click="show_drawer = !show_drawer" />
     </v-app-bar>
-
     <v-main>
-      <div class="pt-2 pl-6 pr-6">
+      <div class="pt-2 pl-4 pr-4 pl-lg-6 pr-lg-6">
         <Nuxt />
       </div>
     </v-main>
@@ -33,24 +31,16 @@
   </v-app>
 </template>
 <script>
-import { optionText } from '@/utils'
 export default {
   middleware: 'auth',
-  computed: {
-    userRoleText() {
-      let roleText = null
-      if (this.$auth.user) {
-        roleText = optionText(this.$auth.user.role, 'roles')
-      }
-      return roleText
-    },
-    settings () {
-      return this.$store.state.settings
+  data() {
+    return {
+      show_drawer: null
     }
   },
-  methods: {
-    logout () {
-      this.$auth.logout()
+  computed: {
+    settings () {
+      return this.$store.state.settings
     }
   },
   head () {

@@ -1,46 +1,51 @@
 <template>
   <div class="medias">
     <AdminBreadcrumb :items="breadcrumb" />
-    <div>
-      <div class="text-right mb-3">
-        <v-btn color="success" to="/conta/medias/new">
-          <b-icon-plus /> Cadastrar
-        </v-btn>
-      </div>
-      <div v-if="medias">
-        <b-table v-if="medias.length" :fields="table" :items="medias" responsive="sm">
-          <template v-slot:cell(picture)="data">
-            <b-img :src="data.value.thumb" width="100" rounded />
-          </template>
-          <template v-slot:cell(tags)="data">
-            <tags :tags="data.value" />
-          </template>
-          <template v-slot:cell(publishing_date)="data">
-            {{ $moment(data.value).format(data.item.publishing_date_format || "DD/MM/YYYY") }}
-          </template>
-          <template v-slot:cell(actions)="data">
-            <n-link class="btn btn-info btn-sm" :to="'/conta/medias/' + data.item._id + '/edit'">
-              <b-icon-pencil />
-            </n-link>
-            <v-btn color="danger" size="sm" @click="remove(data.item)">
-              <b-icon-trash />
+    <v-btn
+      to="/conta/medias/new"
+      fab
+      bottom
+      right
+      fixed
+      color="success"
+    >
+      <v-icon dark>mdi-plus</v-icon>
+    </v-btn>
+    <div v-if="medias">
+      <v-list v-if="medias.length" color="tertiary">
+        <v-list-item v-for="media in medias" :key="media._id" :to="'/conta/medias/' + media._id + '/edit'">
+          <v-list-item-avatar v-if="media.picture">
+            <v-img :src="media.picture.thumb || media.picture.url" />
+          </v-list-item-avatar>
+          <v-list-item-content>
+            <v-list-item-title>{{ media.title }}</v-list-item-title>
+            <v-list-item-subtitle v-if="media.tags && media.tags.length">
+              <tags :tags="media.tags" />
+            </v-list-item-subtitle>
+          </v-list-item-content>
+          <v-list-item-action>
+            <v-list-item-action-text v-if="media.publishing_date">
+              {{ $moment(media.publishing_date).format(media.publishing_date_format || "DD/MM/YYYY") }}
+            </v-list-item-action-text>
+            <v-btn icon>
+              <v-icon>mdi-chevron-right</v-icon>
             </v-btn>
-          </template>
-        </b-table>
-        <b-alert v-else show color="dark" class="text-center">Nenhum item encontrado</b-alert>
-      </div>
-      <div v-else class="text-center">
-        <b-spinner small label="Carregando..." />
-      </div>
+          </v-list-item-action>
+        </v-list-item>
+      </v-list>
+      <v-alert v-else dark color="tertiary" class="text-center">Nenhum item encontrado</v-alert>
     </div>
+    <v-skeleton-loader
+      v-else
+      type="list-item-two-line@3"
+    />
   </div>
 </template>
 <script>
 
 export default {
   layout: 'conta',
-
-  data () {
+  data() {
     return {
       medias: null,
       breadcrumb: [
@@ -69,7 +74,7 @@ export default {
         if (confirmed) {
           await this.$axios.delete('/api/medias/' + media._id).then(() => {
             this.list()
-            this.$toast.success('Item removido com sucesso!')
+            this.$notifier.success('Item removido com sucesso!')
           })
         }
       })

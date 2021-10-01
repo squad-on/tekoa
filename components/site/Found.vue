@@ -6,7 +6,7 @@
       <span v-else><strong>{{ items.length }}</strong> Itens encontrados</span>
     </span>
     <span v-else>
-      <b-spinner small /> Carregando...
+      <v-progress-circular indeterminate small /> Carregando...
     </span>
   </span>
 </template>

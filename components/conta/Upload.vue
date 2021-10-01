@@ -1,61 +1,50 @@
 <template>
-  <div>
-    <b-form-group
-      :label="label"
-      :description="description"
-    >
-      <div v-if="showPreview && !avatar && preview && preview.length">
-        <table class="table b-table b-table-stacked-sm mb-1">
-          <tbody>
-            <tr v-for="(item, index) in preview" :key="index">
-              <td style="width: 100px;">
-                <a :href="item.url" target="_blank">
-                  <b-img v-if="item.thumb" :src="item.thumb" fluid thumbnail width="100" />
-                  <b-icon-image v-else-if="type === 'images'" scale="2" />
-                  <b-icon-file-earmark-text v-else scale="2" />
-                </a>
-              </td>
-              <td v-if="editTitle || editDescription || editLink">
-                <b-form-input v-if="editTitle" v-model="item.title" placeholder="Título" class="mt-1" />
-                <b-form-textarea v-if="editDescription" v-model="item.description" placeholder="Descrição" class="mt-1" />
-                <b-form-input v-if="editLink" v-model="item.link" placeholder="Link" class="mt-1" />
-                <b-form-input v-if="editLink" v-model="item.link_title" placeholder="Título do link" class="mt-1" />
-              </td>
-              <td v-if="editDescription" />
-              <td class="text-md-right">
-                <v-btn color="light" size="sm" @click="deleteFile(index)">
-                  <b-icon-trash />
-                </v-btn>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <v-btn v-if="is_loading" color="secondary" disabled>
-        <b-spinner small />
-        Enviando arquivos...
-      </v-btn>
-      <a v-else-if="avatar" @click="upload">
-        <b-avatar
-          size="6rem"
-          :src="preview && preview[0] && preview[0].thumb ? preview[0].thumb : null"
-        >
-          <template #badge><b-icon-camera /></template>
-        </b-avatar>
-      </a>
-      <v-btn v-else color="success" @click="upload">
-        <b-icon-upload />
-        Enviar {{ type === 'images' ? 'image' + (multiple ? 'ns' : 'm') : 'arquivo' + (multiple ? 's' : '') }}
-      </v-btn>
-      <input
-        v-show="false"
-        :ref="'uploads-input-' + inputId"
-        :multiple="multiple"
-        :accept="accept"
-        type="file"
-        @change="uploadFiles"
+  <div class="mb-6">
+    <v-list v-if="showPreview && !avatar && preview && preview.length" color="tertiary" class="mb-6">
+      <v-list-item v-for="(item, index) in preview" :key="index">
+        <v-list-item-avatar>
+          <v-img v-if="item.thumb" :src="item.thumb" />
+          <v-icon v-else>mdi-paperclip</v-icon>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <div>
+            <v-text-field v-if="editTitle" v-model="item.title" hide-details="auto" dense outlined placeholder="Título" class="mt-1" />
+            <v-textarea v-if="editDescription" v-model="item.description" hide-details="auto" dense outlined placeholder="Descrição" class="mt-1" rows="2" />
+            <v-text-field v-if="editLink" v-model="item.link" hide-details="auto" dense outlined placeholder="Link" class="mt-1" />
+            <v-text-field v-if="editLink" v-model="item.link_title" hide-details="auto" dense outlined placeholder="Título do link" class="mt-1" />
+          </div>
+        </v-list-item-content>
+        <v-list-item-action>
+          <v-btn icon color="primary" size="sm" @click="deleteFile(index)">
+            <v-icon>mdi-delete</v-icon>
+          </v-btn>
+        </v-list-item-action>
+      </v-list-item>
+    </v-list>
+    <v-btn v-if="is_loading" color="secondary" disabled>
+      <v-progress-circular indeterminate small />
+      Enviando arquivos...
+    </v-btn>
+    <a v-else-if="avatar" @click="upload">
+      <v-avatar
+        size="6rem"
       >
-    </b-form-group>
+        <v-img v-if="preview && preview[0] && preview[0].thumb" :src="preview[0].thumb" />
+        <v-icon v-else>mdi-camera</v-icon>
+      </v-avatar>
+    </a>
+    <v-btn v-else color="success" @click="upload">
+      <v-icon>mdi-upload</v-icon>
+      Enviar {{ type === 'images' ? 'image' + (multiple ? 'ns' : 'm') : 'arquivo' + (multiple ? 's' : '') }}
+    </v-btn>
+    <input
+      v-show="false"
+      :ref="'uploads-input-' + inputId"
+      :multiple="multiple"
+      :accept="accept"
+      type="file"
+      @change="uploadFiles"
+    >
   </div>
 </template>
 

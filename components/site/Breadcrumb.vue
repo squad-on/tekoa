@@ -1,17 +1,19 @@
 <template>
-  <v-toolbar dark color="#151621" elevation="0" class="pt-3 mb-10">
+  <v-toolbar dark color="#151621" elevation="0" class="pt-3 mb-8">
     <v-btn
       v-if="$route.path !== '/'"
       small
-      class="tertiary ml-0"
+      class="tertiary ml-n4"
       icon
       @click="$router.replace(links && links.length ? links[links.length -1][1] : '/')"
     >
       <v-icon> mdi-chevron-left </v-icon>
     </v-btn>
-    <v-toolbar-title>
-      <strong v-if="active" class="breadcrumb-item active primary--text">{{ active }}</strong>
-      <strong v-else class="breadcrumb-item active secondary--text">Bem vindo <span v-if="$auth.user && $auth.user.name" class="primary--text">{{ $auth.user.name }}</span></strong>
+    <v-toolbar-title v-if="active">
+      <strong class="primary--text">{{ active }}</strong>
+    </v-toolbar-title>
+    <v-toolbar-title v-else class="ml-n4">
+      <strong class="secondary--text">Bem vindo <span v-if="$auth.user && $auth.user.name" class="primary--text">{{ $auth.user.name }}</span></strong>
     </v-toolbar-title>
   </v-toolbar>
 </template>

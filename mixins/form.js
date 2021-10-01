@@ -25,7 +25,7 @@ export default {
         const range = this.$refs.quillEdit.quill.getSelection()
         this.$refs.quillEdit.quill.insertEmbed(range.index, 'image', `${r.average}`)
       }).catch(e => {
-        this.$toast.error('Ocorreu um erro ao enviar a imagem: ' + e.message)
+        this.$notifier.error('Ocorreu um erro ao enviar a imagem: ' + e.message)
       })
     }
   }

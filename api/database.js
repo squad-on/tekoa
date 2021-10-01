@@ -6,8 +6,6 @@ require('./models/Event')
 require('./models/Page')
 require('./models/Contact')
 require('./models/Media')
-require('./models/Product')
-require('./models/Order')
 require('./config/passport')
 
 const mongoose = require('mongoose')

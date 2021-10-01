@@ -1,65 +1,50 @@
 <template>
   <ValidationObserver v-slot="{ validate, invalid }">
-    <b-form @submit.prevent="validate().then(save)">
-      <b-form-group label="Categoria *">
-        <validation-provider v-slot="{ errors }" name="categoria" rules="required">
-          <b-form-select v-model="form.category" name="category" :options="categories">
-            <template v-slot:first>
-              <b-form-select-option value="" disabled>-- Selecione uma categoria --</b-form-select-option>
-            </template>
-          </b-form-select>
-          <span class="text-danger">{{ errors[0] }}</span>
-        </validation-provider>
-      </b-form-group>
+    <v-form @submit.prevent="validate().then(save)">
+      <validation-provider v-slot="{ errors }" name="categoria" rules="required">
+        <v-select v-model="form.category" name="category" :items="categories" label="Categoria *" :error-messages="errors" outlined />
+      </validation-provider>
       <div v-if="form.category">
         <div v-if="form.category">
-          <b-form-group label="Link do vídeo">
-            <b-form-input v-model="form.url" @input="loadUrl" />
-            <b-spinner v-if="loadingUrl" small label="Carregando vídeo" />
-            <div v-if="form.oembed && !loadingUrl" class="mt-3" v-html="form.oembed" />
-            <Upload v-model="form.documents" label="Ou envie os arquivos" type="documents" multiple edit-title @uploaded="fileUploaded" />
-          </b-form-group>
+          <v-text-field v-model="form.url" outlined label="Link do vídeo" @input="loadUrl" />
+          <v-progress-circular v-if="loadingUrl" indeterminate small label="Carregando vídeo" />
+          <div v-if="form.oembed && !loadingUrl" class="mb-6" v-html="form.oembed" />
+          <Upload v-model="form.documents" label="Ou envie os arquivos" type="documents" multiple edit-title @uploaded="fileUploaded" />
         </div>
         <div>
+          <validation-provider v-slot="{ errors }" name="título" rules="required">
+            <v-text-field v-model="form.title" outlined name="title" label="Título *" :error-messages="errors" />
+          </validation-provider>
+          <v-textarea v-model="form.description" outlined name="description" label="Descrição" />
+          <tags-form v-model="form.tags" :current-tags="currentTags" />
           <v-row>
-            <v-col cols="12" md="12">
-              <b-form-group label="Título *">
-                <validation-provider v-slot="{ errors }" name="título" rules="required">
-                  <b-form-input v-model="form.title" name="title" />
-                  <span class="text-danger">{{ errors[0] }}</span>
-                </validation-provider>
-              </b-form-group>
-            </v-col>
-            <v-col cols="12" md="12">
-              <b-form-group label="Descrição">
-                <b-form-textarea v-model="form.description" name="description" />
-              </b-form-group>
-            </v-col>
-            <v-col cols="12" md="12">
-              <tags-form v-model="form.tags" :current-tags="currentTags" />
+            <v-col cols="12" md="6">
+              <DatePicker v-model="form.publishing_date" label="Data da publicação" />
             </v-col>
             <v-col cols="12" md="6">
-              <b-form-group label="Data da publicação">
-                <b-form-datepicker v-model="form.publishing_date" />
-              </b-form-group>
+              <v-select v-model="form.publishing_date_format" :items="dateFormatOptions" label="Formato da data" />
             </v-col>
             <v-col cols="12" md="6">
-              <b-form-group label="Formato da data">
-                <b-form-select v-model="form.publishing_date_format" :options="dateFormatOptions" />
-              </b-form-group>
-            </v-col>
-            <v-col cols="12" md="6">
-              <b-form-group label="Editora/Fonte" description="Veículo de comunicação onde foi publicado">
-                <b-form-input v-model="form.publishing_house" />
-              </b-form-group>
+              <v-text-field v-model="form.publishing_house" outlined label="Editora/Fonte" description="Veículo de comunicação onde foi publicado" />
             </v-col>
           </v-row>
-          <v-btn class="mb-4 mt-4" type="submit" color="success" block :disabled="invalid">
+          <v-btn large class="mb-4 mt-4" type="submit" color="success" block :disabled="invalid">
             Salvar
           </v-btn>
         </div>
       </div>
-    </b-form>
+    </v-form>
+    <v-btn
+      v-if="media"
+      fab
+      bottom
+      right
+      fixed
+      color="primary"
+      @click="remove(media)"
+    >
+      <v-icon dark>mdi-delete</v-icon>
+    </v-btn>
   </ValidationObserver>
 </template>
 
@@ -90,11 +75,11 @@ export default {
       changePicture: false,
       loadingUrl: false,
       currentTags: [],
-      dateFormatOptions: {
-        'DD/MM/YYYY': 'Dia/Mês/Ano',
-        'MM/YYYY': 'Mês/Ano',
-        YYYY: 'Ano'
-      },
+      dateFormatOptions: [
+        'DD/MM/YYYY',
+        'MM/YYYY',
+        'YYYY'
+      ],
       form: {
         category: '',
         documents: [],
@@ -112,20 +97,20 @@ export default {
   },
   async created() {
     this.toForm(this.form, this.media)
-    this.currentTags = await this.$axios.$get('/api/medias/current_tags')
+    this.currentTags = await this.$axios.$get('/api/medias/tags')
   },
   methods: {
     async save() {
       if (this.media) {
         const media = await this.$axios.$put('/api/medias/' + this.media._id, this.form)
         if (media) {
-          this.$toast.success('Item atualizado com sucesso!')
+          this.$notifier.success('Item atualizado com sucesso!')
           this.$router.push('/conta/medias')
         }
       } else {
         const media = await this.$axios.$post('/api/medias', this.form)
         if (media) {
-          this.$toast.success('Item cadastrado com sucesso!')
+          this.$notifier.success('Item cadastrado com sucesso!')
           this.$router.push('/conta/medias')
         }
       }
@@ -183,6 +168,16 @@ export default {
         return url
       }
       return url
+    },
+    remove (media) {
+      this.$bvModal.msgBoxConfirm('Tem certeza que deseja excluír este item?').then(async confirmed => {
+        if (confirmed) {
+          await this.$axios.delete('/api/medias/' + media.slug).then(() => {
+            this.$notifier.success('Página removida com sucesso!')
+            this.$router.push('/conta/medias')
+          })
+        }
+      })
     }
   }
 }

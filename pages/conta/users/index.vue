@@ -20,10 +20,10 @@
           </v-btn>
         </template>
       </b-table>
-      <b-alert v-else show color="dark" class="text-center">Nenhum item encontrado</b-alert>
+      <v-alert v-else dark color="tertiary" class="text-center">Nenhum item encontrado</v-alert>
     </div>
     <div v-else class="text-center">
-      <b-spinner small label="Carregando..." />
+      <v-progress-circular indeterminate small label="Carregando..." />
     </div>
   </div>
 </template>
@@ -63,7 +63,7 @@ export default {
         if (confirmed) {
           this.$axios.$delete('/api/users/' + user._id).then(res => {
             this.list()
-            this.$toast.success('Usuário removido com sucesso!')
+            this.$notifier.success('Usuário removido com sucesso!')
           })
         }
       })

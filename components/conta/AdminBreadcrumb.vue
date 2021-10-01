@@ -1,10 +1,11 @@
 <template>
-  <v-toolbar dark color="#151621" elevation="0" class="pt-3 mb-10">
+  <v-toolbar dark color="#151621" elevation="0" class="pt-3 mb-8">
     <v-btn
+      v-if="items.filter(item => item.to).length"
       small
-      class="tertiary ml-0"
+      class="tertiary ml-n4"
       icon
-      @click="$router.go(-1)"
+      :to="items.filter(item => item.to).slice(-1)[0].to"
     >
       <v-icon> mdi-chevron-left </v-icon>
     </v-btn>

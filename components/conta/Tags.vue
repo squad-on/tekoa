@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-badge v-for="tag in tags" :key="tag" pill color="primary" class="pointer mr-1" @click="$emit('click', tag)">{{ tag }}</b-badge>
+    <v-chip v-for="tag in tags" :key="tag" x-small class="pointer mr-1" @click="$emit('click', tag)">{{ tag }}</v-chip>
   </div>
 </template>
 

@@ -31,9 +31,6 @@ router.use('/pages', require('./routes/pages'))
 router.use('/contacts', require('./routes/contacts'))
 router.use('/medias', require('./routes/medias'))
 router.use('/menus', require('./routes/menus'))
-router.use('/products', require('./routes/products'))
-router.use('/orders', require('./routes/orders'))
-router.use('/shop', require('./routes/shop'))
 
 router.get('/profile', auth.authenticated, function(req, res) {
   User.findById(req.user._id).exec(function(err, user) {

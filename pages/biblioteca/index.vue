@@ -7,19 +7,17 @@
     />
     <Breadcrumb v-else-if="filters.tag" :links="[['Biblioteca', '/biblioteca']]" :active="filters.tag" />
     <Breadcrumb v-else active="Trilhas" />
-    <v-text-field v-model="filters.search" type="search" label="O que você busca?" solo append-icon="mdi-magnify" rounded color="tertiary" @keyup.prevent.enter="list" />
-    <b-card class="mb-4">
-      <div>
-        <v-btn v-for="category in categories" :key="category" rounded :color="filters.category === category ? 'primary' : 'tertiary'" class="mb-1 mr-1" @click="filters.category !== category ? filters.category = category : filters.category = null; list()">
-          {{ category }}
-          <v-icon v-if="filters.category === category">mdi-window-close</v-icon>
-        </v-btn>
-      </div>
-    </b-card>
-    <div class="tags mb-4">
+    <v-text-field v-model="filters.search" type="search" label="O que você busca?" solo append-icon="mdi-magnify" rounded color="primary" background-color="tertiary" @keyup.prevent.enter="list" />
+    <div class="mb-4">
+      <v-btn v-for="category in categories" :key="category" rounded :color="filters.category === category ? 'primary' : 'tertiary'" class="mb-1 mr-1" small @click="filters.category !== category ? filters.category = category : filters.category = null; list()">
+        {{ category }}
+        <v-icon v-if="filters.category === category" small>mdi-window-close</v-icon>
+      </v-btn>
+    </div>
+    <!-- <div class="tags mb-4">
       <v-btn v-for="tag in tags" :key="tag" size="sm" color="secondary" :class="{ active: (tag === filters.tag) }" class="mb-1 mr-1" @click="filters.tag = tag; list()">{{ tag }}</v-btn>
       <v-btn v-if="filters.tag" color="primary" @click="filters.tag = null; list()">Todos os temas</v-btn>
-    </div>
+    </div> -->
     <div v-if="medias">
       <div class="d-flex align-items-center mb-4">
         <Found :items="medias" />&nbsp;<span v-if="filters.category" class="text-primary"> em <strong>{{ filters.category }}</strong></span>

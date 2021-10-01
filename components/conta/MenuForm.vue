@@ -57,13 +57,13 @@ export default {
       if (this.menu) {
         const menu = await this.$axios.$put('/api/menus/' + this.menu.id, this.form)
         if (menu) {
-          this.$toast.success('Menu atualizado com sucesso.')
+          this.$notifier.success('Menu atualizado com sucesso.')
           this.$router.push('/conta/menus')
         }
       } else {
         const menu = await this.$axios.$post('/api/menus', this.form)
         if (menu) {
-          this.$toast.success('Menu cadastrado com sucesso.')
+          this.$notifier.success('Menu cadastrado com sucesso.')
           this.$router.push('/conta/menus')
         }
       }

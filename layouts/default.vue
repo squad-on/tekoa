@@ -26,13 +26,12 @@
       </v-app-bar>
 
       <v-main>
-        <div class="pt-2 pl-6 pr-6">
+        <div class="pt-2 pl-4 pr-4 pl-lg-6 pr-lg-6">
           <Nuxt />
           <v-divider />
           <Footer />
         </div>
       </v-main>
-      <Portal />
       <Snackbar />
     </div>
     <div v-if="!settings" class="my-5">

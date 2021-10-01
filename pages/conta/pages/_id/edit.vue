@@ -3,7 +3,7 @@
     <AdminBreadcrumb :items="breadcrumb" />
     <PageForm v-if="page" :page="page" />
     <div v-else class="text-center">
-      <b-spinner small label="Carregando..." />
+      <v-progress-circular indeterminate small label="Carregando..." />
     </div>
   </div>
 </template>

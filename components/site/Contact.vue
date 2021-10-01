@@ -1,7 +1,7 @@
 <template>
   <div class="contact-component text-left mt-3">
     <ValidationObserver v-slot="{ validate, invalid }">
-      <b-form @submit.prevent="validate().then(save)">
+      <v-form @submit.prevent="validate().then(save)">
         <v-row>
           <v-col cols="12" md="6">
             <validation-provider v-slot="{ errors }" name="nome" rules="required">
@@ -15,7 +15,7 @@
           </v-col>
           <v-col cols="12" md="12">
             <validation-provider v-slot="{ errors }" name="message" rules="required">
-              <v-textarea v-model="form.message" name="message" label="Sua sua mensagem" outlined :error-messages="errors" hide-details="auto" dense rows="3" auto-grow class="mb-3" />
+              <v-textarea v-model="form.message" outlined name="message" label="Sua sua mensagem" :error-messages="errors" hide-details="auto" dense rows="3" auto-grow class="mb-3" />
             </validation-provider>
           </v-col>
         </v-row>
@@ -24,7 +24,8 @@
             Enviar mensagem
           </v-btn>
         </div>
-      </b-form>
+      </v-form>
+      </v-form>
     </ValidationObserver>
   </div>
 </template>
@@ -52,7 +53,7 @@ export default {
     async save () {
       const contact = await this.$axios.$post('/api/contacts/contact', this.form)
       if (contact) {
-        this.$toast.success('Sua mensagem foi enviado. Em breve entraremos em contato. Obrigado!')
+        this.$notifier.success('Sua mensagem foi enviado. Em breve entraremos em contato. Obrigado!')
       }
     }
   }

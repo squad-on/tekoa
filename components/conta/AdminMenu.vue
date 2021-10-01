@@ -26,22 +26,6 @@
           <v-list-item-title>Dashboard</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item v-if="$auth.user.role === 'admin'" to="/conta/pages">
-        <v-list-item-icon>
-          <v-icon>mdi-information</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title>Páginas</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-      <v-list-item v-if="$auth.user.role === 'admin'" to="/conta/menus">
-        <v-list-item-icon>
-          <v-icon>mdi-menu</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title>Menus</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
       <v-list-item v-if="$auth.user.role === 'admin'" to="/conta/medias">
         <v-list-item-icon>
           <v-icon>mdi-hiking</v-icon>
@@ -66,6 +50,22 @@
         <v-list-item-title>Reconhecimento</v-list-item-title>
       </v-list-item-content>
     </v-list-item> -->
+      <v-list-item v-if="$auth.user.role === 'admin'" to="/conta/pages">
+        <v-list-item-icon>
+          <v-icon>mdi-information</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Páginas</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item v-if="$auth.user.role === 'admin'" to="/conta/menus">
+        <v-list-item-icon>
+          <v-icon>mdi-menu</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Menus</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
       <v-list-item v-if="$auth.user.role === 'admin'" to="/conta/contacts">
         <v-list-item-icon>
           <v-icon>mdi-email</v-icon>
@@ -130,7 +130,11 @@ export default {
     },
     async list () {
       this.menus = await this.$axios.$get('/api/menus/submenus', { params: { populate: 'page' } })
+    },
+    logout () {
+      this.$auth.logout()
     }
+
   }
 }
 </script>
