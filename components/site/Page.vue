@@ -1,12 +1,11 @@
 <template>
-  <div>
-    <Banners v-if="page" :items="page.pictures" />
+  <div v-if="page">
     <Breadcrumb
-      v-if="page"
       :active="page.title"
       :description="page.description"
     />
-    <div v-if="page" class="page">
+    <Banners :items="page.pictures" />
+    <div class="page">
       <p v-if="page.description">{{ page.description }}</p>
       <div v-if="!showContent" class="text-center mb-5">
         <v-btn v-if="page.content || (page.pictures && page.pictures.length) || (page.documents && page.documents.length)" color="secondary" @click="showMore = !showMore">

@@ -7,7 +7,6 @@ const Post = mongoose.model('Post')
 
 router.get('/', (req, res) => {
   Post.find({}).populate(req.query.populate).sort({ createdAt: -1 }).exec((err, posts) => {
-    console.log('asdfasdf', posts)
     if (err) {
       res.status(422).send(err.message)
     } else {

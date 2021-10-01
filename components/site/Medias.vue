@@ -1,21 +1,28 @@
 <template>
-  <div class="medias-component">
-    <div>
-      <b-card-group columns>
-        <b-card v-for="media in medias" :key="media._id" no-body>
-          <div v-if="media.picture" class="img">
-            <!-- <div v-if="media.category === 'Vídeos' && media.oembed" class="card-img-top" v-html="media.oembed" /> -->
-            <v-img :src="media.picture ? media.picture.thumb : null" :alt="media.title" class="card-img-top" />
-          </div>
-          <div class="card-body">
-            <div class="card-text">
+  <div>
+    <div v-if="medias">
+      <v-row v-if="medias.length">
+        <v-col v-for="media in medias" :key="media._id" sm="4" md="3">
+          <v-card :to="'/trilhas/' + media._id" color="tertiary">
+            <v-img v-if="media.picture" :src="media.picture ? media.picture.thumb : null" :alt="media.title" :aspect-ratio="16/9" />
+            <v-card-title class="secondary--text">
               {{ media.title }}
-            </div>
-            <n-link :to="'/biblioteca/' + media._id" class="stretched-link hidden" />
-          </div>
-        </b-card>
-      </b-card-group>
+            </v-card-title>
+            <v-card-text>
+              <tags :tags="media.tags" />
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-alert v-else color="tertiary" class="text-center">
+        Nenhuma trilha encontrada
+      </v-alert>
     </div>
+    <v-row v-else class="mb-6">
+      <v-col v-for="i in 4" :key="i" md="3">
+        <v-skeleton-loader type="card" />
+      </v-col>
+    </v-row>
   </div>
 </template>
 

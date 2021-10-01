@@ -6,7 +6,9 @@ const Menu = mongoose.model('Menu')
 
 router.get('/', async (req, res) => {
   try {
-    const menus = await Menu.find({}).populate(req.query.populate).sort('name')
+    const menus = await Menu.find({ menu: null })
+      .populate({ path: 'page', select: 'slug' })
+      .populate({ path: 'children', populate: { path: 'page', select: 'slug' } }).sort('name')
     res.json(menus)
   } catch (err) {
     res.status(422).send(err.message)

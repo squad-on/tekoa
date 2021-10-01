@@ -1,32 +1,21 @@
 <template>
   <div class="medias-component">
     <div>
-      <div v-if="media.category === 'Vídeos' && media.oembed" v-html="media.oembed" />
+      <div v-if="media.oembed" class="mb-6" v-html="media.oembed" />
       <Banners v-else-if="media.picture" :items="[media.picture]" />
       <div>
-        <h3 class="mt-3">{{ media.title }}</h3>
-        <small>Publicado em: {{ $moment(media.publishing_date).format(media.publishing_date_format || "DD/MM/YYYY") }} em <n-link :to="'/biblioteca?categoria=' + media.category"><strong>{{ media.category }}</strong></n-link></small>
+        <p><small>Trilha: <n-link :to="'/trilhas?categoria=' + media.category"><strong>{{ media.category }}</strong></n-link></small></p>
+        <p><small>Publicado em: {{ $moment(media.publishing_date).format(media.publishing_date_format || "DD/MM/YYYY") }}</small></p>
         <p v-if="media.description" class="mt-3">{{ media.description }}</p>
+        <Documents :documents="media.documents" label="Baixar documentos" />
         <p v-if="media.publishing_house">
-          Editora/Fonte: <strong>{{ media.publishing_house }}</strong>
+          <v-icon>mdi-youtube</v-icon>
+          <a :href="media.url" target="_blank">
+            <strong>{{ media.publishing_house }}</strong>
+          </a>
         </p>
-        <p v-if="media.category !== 'Notícias' && media.category !== 'Vídeos'">
-          <v-btn v-if="media.url" :href="media.url" target="_blank" color="primary">Acessar Conteúdo</v-btn>
-          <Documents :documents="media.documents" label="Baixar documentos" />
-        </p>
-        <div class="tags-component">
-          <v-btn v-for="tag in media.tags" :key="tag._id" :to="'/biblioteca?tag=' + tag" size="sm" class="mr-1">
-            {{ tag }}
-          </v-btn>
-        </div>
-        <share />
+        <Tags :tags="media.tags" />
       </div>
-    </div>
-    <br>
-    <div class="text-center">
-      <v-btn color="secondary" @click="$router.go(-1)">
-        Voltar à biblioteca
-      </v-btn>
     </div>
   </div>
 </template>

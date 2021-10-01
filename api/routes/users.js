@@ -8,7 +8,6 @@ const setData = (user, data) => {
   user.name = data.name
   user.picture = data.picture
   user.organization = data.organization
-  user.addresses = data.addresses
   user.phone = data.phone
   user.cpf_cnpj = data.cpf_cnpj
 }

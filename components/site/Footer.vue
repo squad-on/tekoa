@@ -1,7 +1,7 @@
 <template>
-  <div class="footer pt-5 pb-5 bg-primary">
-    <footer v-if="settings">
-      <v-row>
+  <div class="footer">
+    <footer v-if="settings" class="mb-10">
+      <v-row class="mb-3">
         <v-col cols="12" sm="6">
           <n-link to="/">
             <v-img
@@ -32,6 +32,8 @@
           <Contact />
         </v-col>
       </v-row>
+      <v-divider class="mb-10 mt-8" />
+      <share />
     </footer>
   </div>
 </template>

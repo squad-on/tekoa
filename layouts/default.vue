@@ -28,7 +28,7 @@
       <v-main>
         <div class="pt-2 pl-4 pr-4 pl-lg-6 pr-lg-6">
           <Nuxt />
-          <v-divider />
+          <v-divider class="mt-10 mb-10" />
           <Footer />
         </div>
       </v-main>

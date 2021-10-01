@@ -53,6 +53,9 @@ export default {
     async save () {
       const contact = await this.$axios.$post('/api/contacts/contact', this.form)
       if (contact) {
+        this.form.name = ''
+        this.form.email = ''
+        this.form.message = ''
         this.$notifier.success('Sua mensagem foi enviado. Em breve entraremos em contato. Obrigado!')
       }
     }
