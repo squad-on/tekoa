@@ -8,7 +8,7 @@
     offset-y
     min-width="auto"
   >
-    <template v-slot:activator="{ on, attrs }">
+    <template #activator="{ on, attrs }">
       <v-text-field
         v-model="date"
         :label="label"

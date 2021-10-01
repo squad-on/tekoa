@@ -26,6 +26,9 @@ export default {
       }
     }
   },
+  watchQuery(newQuery) {
+    this.list(newQuery)
+  },
   async created () {
     if (this.$route.params.id) {
       this.get(this.$route.params.id)
@@ -49,9 +52,6 @@ export default {
       this.filters.category = null
       this.list()
     }
-  },
-  watchQuery(newQuery) {
-    this.list(newQuery)
   }
 }
 </script>

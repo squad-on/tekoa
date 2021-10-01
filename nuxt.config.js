@@ -33,6 +33,7 @@ export default {
   components: true,
   buildModules: [
     '@nuxtjs/eslint-module',
+    '@nuxtjs/stylelint-module',
     '@nuxtjs/google-fonts',
     '@nuxtjs/moment',
     '@nuxtjs/fontawesome',

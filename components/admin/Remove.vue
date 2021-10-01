@@ -4,7 +4,7 @@
     max-width="290"
     @click:outside="removeComment = null"
   >
-    <template v-slot:activator="{ on, attrs }">
+    <template #activator="{ on, attrs }">
       <v-btn
         v-bind="attrs"
         fab

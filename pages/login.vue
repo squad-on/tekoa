@@ -67,12 +67,12 @@
 <script>
 import { ValidationObserver, ValidationProvider } from 'vee-validate'
 export default {
-  layout: 'login',
 
   components: {
     ValidationObserver,
     ValidationProvider
   },
+  layout: 'login',
   data () {
     return {
       tab: this.$route.query.tab || 'login',
