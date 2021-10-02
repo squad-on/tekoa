@@ -1,7 +1,7 @@
 export default {
   methods: {
     toForm(form, data) {
-      Object.keys(form).map((key) => {
+      Object.keys(form).forEach((key) => {
         if (data && data[key] !== null && data[key] !== undefined) {
           if (typeof data[key] === 'string' && data[key].includes('T00:00:00.000Z') && key !== 'date_time') {
             form[key] = data[key].replace(/T00:00:00.000Z/g, '')
@@ -25,7 +25,7 @@ export default {
         const range = this.$refs.quillEdit.quill.getSelection()
         this.$refs.quillEdit.quill.insertEmbed(range.index, 'image', `${r.average}`)
       }).catch(e => {
-        this.$toast.error('Ocorreu um erro ao enviar a imagem: ' + e.message)
+        this.$notifier.error('Ocorreu um erro ao enviar a imagem: ' + e.message)
       })
     }
   }

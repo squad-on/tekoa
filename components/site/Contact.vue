@@ -1,39 +1,31 @@
 <template>
   <div class="contact-component text-left mt-3">
     <ValidationObserver v-slot="{ validate, invalid }">
-      <b-form @submit.prevent="validate().then(save)">
-        <b-row>
-          <b-col md="6">
-            <b-form-group>
-              <validation-provider v-slot="{ errors }" name="nome" rules="required">
-                <b-form-input v-model="form.name" name="name" placeholder="Digite seu nome" />
-                <span class="text-white">{{ errors[0] }}</span>
-              </validation-provider>
-            </b-form-group>
-          </b-col>
-          <b-col md="6">
-            <b-form-group>
-              <validation-provider v-slot="{ errors }" name="email" rules="required|email">
-                <b-form-input v-model="form.email" name="email" placeholder="Digite seu email" />
-                <span class="text-white">{{ errors[0] }}</span>
-              </validation-provider>
-            </b-form-group>
-          </b-col>
-          <b-col md="12">
-            <b-form-group>
-              <validation-provider v-slot="{ errors }" name="message" rules="required">
-                <b-form-textarea v-model="form.message" name="message" placeholder="Sua sua mensagem" />
-                <span class="text-white">{{ errors[0] }}</span>
-              </validation-provider>
-            </b-form-group>
-          </b-col>
-        </b-row>
+      <v-form @submit.prevent="validate().then(save)">
+        <v-row>
+          <v-col cols="12" md="6">
+            <validation-provider v-slot="{ errors }" name="nome" rules="required">
+              <v-text-field v-model="form.name" name="name" label="Digite seu nome" outlined :error-messages="errors" hide-details="auto" dense />
+            </validation-provider>
+          </v-col>
+          <v-col cols="12" md="6">
+            <validation-provider v-slot="{ errors }" name="email" rules="required|email">
+              <v-text-field v-model="form.email" name="email" label="Digite seu email" outlined :error-messages="errors" hide-details="auto" dense />
+            </validation-provider>
+          </v-col>
+          <v-col cols="12" md="12">
+            <validation-provider v-slot="{ errors }" name="message" rules="required">
+              <v-textarea v-model="form.message" outlined name="message" label="Sua sua mensagem" :error-messages="errors" hide-details="auto" dense rows="3" auto-grow class="mb-3" />
+            </validation-provider>
+          </v-col>
+        </v-row>
         <div class="text-right">
-          <b-button type="submit" variant="secondary" class="btn-home" :disabled="invalid">
-            ENVIAR
-          </b-button>
+          <v-btn type="submit" color="secondary" :disabled="invalid" large>
+            Enviar mensagem
+          </v-btn>
         </div>
-      </b-form>
+      </v-form>
+      </v-form>
     </ValidationObserver>
   </div>
 </template>
@@ -61,7 +53,10 @@ export default {
     async save () {
       const contact = await this.$axios.$post('/api/contacts/contact', this.form)
       if (contact) {
-        this.$toast.success('Sua mensagem foi enviado. Em breve entraremos em contato. Obrigado!')
+        this.form.name = ''
+        this.form.email = ''
+        this.form.message = ''
+        this.$notifier.success('Sua mensagem foi enviado. Em breve entraremos em contato. Obrigado!')
       }
     }
   }

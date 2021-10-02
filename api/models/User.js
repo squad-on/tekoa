@@ -2,7 +2,6 @@ const crypto = require('crypto')
 const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator')
 const jwt = require('jsonwebtoken')
-const AddressSchema = require('./Address')
 
 mongoose.set('useCreateIndex', true)
 const secret = process.env.SECRET || process.env.APP_NAME
@@ -33,7 +32,6 @@ const UserSchema = new mongoose.Schema({
   },
   organization: String,
   picture: Object,
-  addresses: [AddressSchema],
   phone: String,
   cpf_cnpj: String
 }, {
@@ -63,7 +61,6 @@ UserSchema.methods.data = function() {
     name: this.name,
     picture: this.picture,
     organization: this.organization,
-    addresses: this.addresses,
     phone: this.phone,
     cpf_cnpj: this.cpf_cnpj
   }

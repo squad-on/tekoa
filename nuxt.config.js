@@ -11,20 +11,18 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Raleway:wght@400;500;600&display=swap' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
   css: ['@/assets/css/custom.sass'],
   pageTransition: 'page',
   plugins: [
+    '~plugins/notifier.js',
     '~plugins/axios.js',
     '~plugins/persisted-state.js',
     '~plugins/vue2-filters.js',
     '~plugins/filters.js',
     '~plugins/url.js',
-    '~plugins/bootstrap-vue.js',
     { src: '~plugins/quill.js', ssr: false },
     { src: '~/plugins/v-calendar', ssr: false },
     { src: '~/plugins/v-money.js', ssr: false },
@@ -35,14 +33,14 @@ export default {
   components: true,
   buildModules: [
     '@nuxtjs/eslint-module',
+    '@nuxtjs/stylelint-module',
     '@nuxtjs/google-fonts',
     '@nuxtjs/moment',
     '@nuxtjs/fontawesome',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/google-analytics',
+    '@nuxtjs/vuetify'
   ],
   modules: [
-    // Doc: https://bootstrap-vue.js.org
-    ['bootstrap-vue/nuxt'],
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
@@ -62,7 +60,7 @@ export default {
         }
       }
     ],
-    'nuxt-vue-select',
+    // 'nuxt-vue-select',
     'vue-scrollto/nuxt',
     'nuxt-leaflet'
   ],
@@ -82,11 +80,6 @@ export default {
     },
     scopeKey: 'role'
   },
-  bootstrapVue: {
-    css: false,
-    bvCSS: false,
-    icons: true
-  },
   toast: {
     duration: 7000,
     keepOnHover: true,
@@ -94,16 +87,6 @@ export default {
   },
   tui: {
     editor: {}
-  },
-  googleFonts: {
-    families: {
-      Montserrat: {
-        wght: ['300']
-      },
-      Arvo: {
-        wght: ['400', '700']
-      }
-    }
   },
   moment: {
     defaultLocale: 'pt-br',
@@ -119,6 +102,21 @@ export default {
   },
   googleAnalytics: {
     id: 'UA-185563105-2'
+  },
+  vuetify: {
+    customVariables: ['~/assets/css/variables.sass'],
+    treeShake: true,
+    theme: {
+      dark: true, // you don't actually need this line as it's for default
+      themes: {
+        dark: {
+          background: '#151621',
+          primary: '#FF012F',
+          secondary: '#4F516F',
+          tertiary: '#1A1C28'
+        }
+      }
+    }
   },
   proxy: {
     pathRewrite: {

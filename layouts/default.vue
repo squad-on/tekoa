@@ -1,22 +1,55 @@
 <template>
-  <div class="default-layout" :class="{ 'header-transparent': $route.path === '/' && settings && settings.banners && settings.banners.length > 0 }">
+  <v-app>
     <div v-show="settings">
-      <Header />
-      <!-- <div class="sub-header" /> -->
-      <Nuxt />
-      <Footer />
+      <v-navigation-drawer v-model="show_drawer" app width="314" color="#1A1C28">
+        <div class="pa-8 pt-10 pb-10">
+          <n-link to="/">
+            <v-img
+              title="Prolancer.guru"
+              :src="require('~/assets/img/logo.png')"
+              contain
+            />
+          </n-link>
+        </div>
+        <Menu />
+      </v-navigation-drawer>
+
+      <v-app-bar dark hide-on-scroll color="#1A1C28" class="d-lg-none">
+        <v-img
+          title="Prolancer.guru"
+          :src="require('~/assets/img/logo.png')"
+          contain
+          max-width="180"
+        />
+        <v-spacer />
+        <v-app-bar-nav-icon @click="show_drawer = !show_drawer" />
+      </v-app-bar>
+
+      <v-main>
+        <div class="pt-2 pl-4 pr-4 pl-lg-6 pr-lg-6">
+          <Nuxt />
+          <v-divider class="mt-10 mb-10" />
+          <Footer />
+        </div>
+      </v-main>
+      <Snackbar />
     </div>
     <div v-if="!settings" class="my-5">
-      <b-container>
+      <v-container>
         <h4>Este site ainda não foi configurado.</h4>
         <h5 class="mb-5">Vamos configurá-lo?</h5>
         <SetupForm />
-      </b-container>
+      </v-container>
     </div>
-  </div>
+  </v-app>
 </template>
 <script>
 export default {
+  data() {
+    return {
+      show_drawer: null
+    }
+  },
   computed: {
     settings () {
       return this.$store.state.settings

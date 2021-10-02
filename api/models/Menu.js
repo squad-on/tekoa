@@ -28,11 +28,12 @@ MenuSchema.plugin(uniqueValidator, {
   message: 'Este nome já está sendo usado'
 })
 
-// MenuSchema.virtual('submenu', {
-//   ref: 'Menu',
-//   localField: 'menu',
-//   foreignField: '_id',
-// })
+MenuSchema.virtual('children', {
+  ref: 'Menu',
+  localField: '_id',
+  foreignField: 'menu',
+  options: { sort: { name: 1 } }
+})
 
 const Menu = mongoose.models.Menu || mongoose.model('Menu', MenuSchema)
 module.exports = Menu

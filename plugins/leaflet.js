@@ -1,6 +1,6 @@
+/* eslint-disable */
 import { L } from 'vue2-leaflet'
 const x = () => {
-  /* eslint-disable */
   return L.divIcon({
     className: 'my-custom-pin',
     html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 34.892337" height="60" width="40">
