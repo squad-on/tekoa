@@ -2,11 +2,39 @@
 
 Projeto de EAD para criação de trilhas de aprendizagens e desafios de forma rápida e dinâmica
 
-### Tecnologias usadas
+### Tecnologias utilizadas
 
-Node.js, Express, Nuxt, Axios, PWA, Vuetify, MongoDb, Mongoose, Passport, Multer, Sharp...
+Englobando todo o projeto está o Nuxt.js com alguns módulos da comunidade @nuxtjs como: 
+- @nuxtjs/auth para a autenticação
+- @nuxtjs/axios para requisições da API
+- @nuxtjs/pwa para ativar recursos de Progressive Web Apps
+- @nuxtjs/toast para exibir mensagens ao usuário
+ 
+Compondo o lado do frontend está o Vue.js com algumas bibliotecas do seu ecossistema:
+- BootstrapVue para os componentes de tela e criação do design
+- Leaflet para renderizar os mapas
+- vue-goodshare exibe os botões de compartilhamento
+- moment para trabalhar com datas
+- v-money adiciona máscaras de moedas nos inputs dos formulários
+- vee-validate faz a validação dos dados nos formulários
+- v-calendar nos dá um calendário personalizado e dinâmico
+- vue-easy-lightbox cuida da apresentação das imagens em forma de galeria
+- vue-quill-editor permite cadastrar textos formatados para a criação de páginas dinâmicas
+- vue-the-mask adiciona mascaras nos inputs dos formulários (telefone, cpf, cnpj, etc...)
+- vue2-datepicker adiciona um date picker nos inputs de data
+- vue2-filters ajuda na formatação de dados como moedas, percentual, truncate...
+- vuex-persistedstate guarda uma cópia do state localmente permitindo assim persistir o estado da aplicação
 
-### Developer instructions
+O lado servidor está construido em cima do Node.js e algumas de suas bibliotecas:
+- Mongodb como banco de dados
+- Express cuidada do fluxo da aplicação (sessão, rotas...).
+- Mongoose faz a interface e estruturação do banco de dados
+- Passport cuida da autenticação
+- multer recebe e processa os uploads
+- sharp gera as miniaturas das images enviadas
+- pdf-image gera as miniaturas dos arquivos PDF enviados
+
+### Instruções de desenvolvimento
 
 ```bash
 # Clone esse repositório
