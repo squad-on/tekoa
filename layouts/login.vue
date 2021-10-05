@@ -3,14 +3,16 @@
     <div v-show="settings">
       <v-row no-gutters>
         <v-col cols="12" md="6" class="d-flex align-center justify-center">
-          <div>
-            <v-container fluid class="d-flex justify-center">
-              <v-img
-                title="Prolancer.guru"
-                :src="require('~/assets/img/logo.png')"
-                contain
-                max-width="180"
-              />
+          <div style="width: 100%" class="px-md-10">
+            <v-container fluid class="d-flex justify-center mb-3 mt-6">
+              <n-link to="/">
+                <v-img
+                  title="Prolancer.guru"
+                  :src="require('~/assets/img/logo.png')"
+                  contain
+                  max-width="260"
+                />
+              </n-link>
             </v-container>
             <v-main>
               <Nuxt />
