@@ -9,10 +9,13 @@
         <p v-if="media.description" class="mt-3">{{ media.description }}</p>
         <Documents :documents="media.documents" label="Baixar documentos" />
         <p v-if="media.publishing_house">
-          <v-icon>mdi-youtube</v-icon>
-          <a :href="media.url" target="_blank">
-            <strong>{{ media.publishing_house }}</strong>
-          </a>
+          <small>
+            Fonte:
+            <v-icon>{{ `mdi-${media.publishing_house.toLowerCase()}` }}</v-icon>
+            <a :href="media.url" target="_blank">
+              <strong>{{ media.publishing_house }}</strong>
+            </a>
+          </small>
         </p>
         <Tags :tags="media.tags" />
       </div>
