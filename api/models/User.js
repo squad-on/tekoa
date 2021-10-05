@@ -30,6 +30,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  offer: [String],
+  need: [String],
   organization: String,
   picture: Object,
   phone: String,

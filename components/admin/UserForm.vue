@@ -34,6 +34,16 @@
             Alterar senha
           </v-btn>
         </v-col>
+        <v-col cols="12" md="6">
+          <validation-provider v-slot="{ errors }" name="offer">
+            <v-text-field v-model="form.offer" outlined name="offer" label="Eu Ofereço*" :error-messages="errors" />
+          </validation-provider>
+        </v-col>
+        <v-col cols="12" md="6">
+          <validation-provider v-slot="{ errors }" name="need">
+            <v-text-field v-model="form.need" outlined name="need" label="Eu Necessito*" :error-messages="errors" />
+          </validation-provider>
+        </v-col>
       </v-row>
       <v-row v-if="show_password">
         <v-col cols="12" md="6">
@@ -75,6 +85,8 @@ export default {
     return {
       show_password: !this.user,
       roles,
+      offers,
+      needs,
       form: {
         name: '',
         picture: null,
@@ -84,7 +96,9 @@ export default {
         cpf_cnpj: '',
         password: '',
         password_confirmation: '',
-        role: null
+        role: null,
+        offer: null,
+        need: null
       }
     }
   },
