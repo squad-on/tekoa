@@ -36,7 +36,7 @@
           <v-icon>mdi-radar</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>Desafios</v-list-item-title>
+          <v-list-item-title>Match</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-list-item v-if="$auth.user.role === 'admin'" class="ml-n10 pl-12" to="/admin/pages">
