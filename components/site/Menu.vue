@@ -1,7 +1,7 @@
 <template>
   <div class="pl-3">
     <v-list dark nav>
-      <v-list-item class="mb-0" :to="$auth.user ? '/profile' : '/login'">
+      <v-list-item class="mb-0" :to="$auth.user ? '/profile' : '/login?tab=register'">
         <v-list-item-avatar color="#4F516F" size="58">
           <v-img v-if="$auth.user && $auth.user.picture && $auth.user.picture.url" :src="$auth.user.picture.url" />
           <v-icon v-else>mdi-account</v-icon>
@@ -10,19 +10,11 @@
           <v-list-item-title v-if="$auth.user" class="text-h6">
             {{ $auth.user.name }}
           </v-list-item-title>
-          <v-list-item-title v-else class="text-h6">
-            Minha conta
+          <v-list-item-title v-else class="text-h6 primary--text">
+            Cadastre-se!
           </v-list-item-title>
           <v-list-item-subtitle v-if="$auth.user">{{ $auth.user.email }}</v-list-item-subtitle>
         </v-list-item-content>
-        <v-list-item-action class="text-h6">
-          <v-btn v-if="$auth.user" icon small>
-            <v-icon>mdi-chevron-right</v-icon>
-          </v-btn>
-          <v-btn v-else icon small to="/login">
-            <v-icon>mdi-login</v-icon>
-          </v-btn>
-        </v-list-item-action>
       </v-list-item>
     </v-list>
     <v-list nav class="pb-0 mt-3" rounded dense>
