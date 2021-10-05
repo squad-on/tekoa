@@ -1,23 +1,29 @@
 <template>
   <v-container fluid>
     <div v-show="tab === 'login'">
+      <div class="text-center">
+        <p class="mb-8">
+          Ainda não possúi uma conta?
+          <v-btn color="success" small @click="open('register')">
+            <strong>Cadastre-se</strong>
+          </v-btn>
+        </p>
+      </div>
       <form @submit.prevent="login">
         <v-text-field v-model="form.email" outlined type="text" label="Digite seu email" append-icon="mdi-email-outline" />
         <v-text-field v-model="form.password" outlined type="password" label="Digite sua senha" append-icon="mdi-lock" />
-        <div class="text-center">
-          <v-btn type="submit" color="primary" block x-large>
-            Entrar
-          </v-btn>
-          <p class="mt-4">
-            Ainda não possúi uma conta?
-            <v-btn color="success" small @click="open('register')">
-              <strong>Cadastre-se</strong>
-            </v-btn>
-          </p>
-        </div>
+        <v-btn type="submit" color="primary" block x-large>
+          Entrar
+        </v-btn>
       </form>
     </div>
     <div v-show="tab === 'register'">
+      <p class="mb-8 text-center">
+        Já possúi uma conta?
+        <v-btn color="success" small @click="open('login')">
+          <strong>Entre</strong>
+        </v-btn>
+      </p>
       <ValidationObserver v-slot="{ validate, invalid }">
         <v-form @submit.prevent="validate().then(register)">
           <validation-provider v-slot="{ errors }" name="nome" rules="required">
@@ -47,17 +53,9 @@
             <v-alert v-if="!passwordConfirmed" type="error" class="text-danger">As senhas digitadas não conferem</v-alert>
           </validation-provider>
 
-          <div class="text-center">
-            <v-btn type="submit" color="primary" block x-large :disabled="invalid">
-              Cadastrar
-            </v-btn>
-            <p class="mt-4">
-              Já possúi uma conta?
-              <v-btn color="success" small @click="open('login')">
-                <strong>Entre</strong>
-              </v-btn>
-            </p>
-          </div>
+          <v-btn type="submit" color="primary" block x-large :disabled="invalid">
+            Cadastrar
+          </v-btn>
         </v-form>
       </ValidationObserver>
     </div>

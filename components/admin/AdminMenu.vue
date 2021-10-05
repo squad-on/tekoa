@@ -2,12 +2,12 @@
   <div class="pl-3">
     <v-list dark nav>
       <v-list-item class="mb-0" to="/profile">
-        <v-list-item-avatar color="#4F516F" size="58">
+        <v-list-item-avatar color="#4F516F">
           <v-img v-if="$auth.user && $auth.user.picture && $auth.user.picture.url" :src="$auth.user.picture.url" />
           <v-icon v-else>mdi-account</v-icon>
         </v-list-item-avatar>
         <v-list-item-content>
-          <v-list-item-title v-if="$auth.user.name" class="text-h6">
+          <v-list-item-title v-if="$auth.user.name">
             {{ $auth.user.name }}
           </v-list-item-title>
           <v-list-item-subtitle>{{ $auth.user.email }}</v-list-item-subtitle>

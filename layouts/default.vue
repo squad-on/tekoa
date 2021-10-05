@@ -15,12 +15,14 @@
       </v-navigation-drawer>
 
       <v-app-bar dark hide-on-scroll color="#1A1C28" class="d-lg-none">
-        <v-img
-          title="Prolancer.guru"
-          :src="require('~/assets/img/logo.png')"
-          contain
-          max-width="180"
-        />
+        <n-link to="/">
+          <v-img
+            title="Prolancer.guru"
+            :src="require('~/assets/img/logo.png')"
+            contain
+            max-width="180"
+          />
+        </n-link>
         <v-spacer />
         <v-app-bar-nav-icon @click="show_drawer = !show_drawer" />
       </v-app-bar>

@@ -2,7 +2,7 @@
   <div>
     <div v-if="medias">
       <v-row v-if="medias.length">
-        <v-col v-for="media in medias" :key="media._id" sm="4" md="3">
+        <v-col v-for="media in medias" :key="media._id" cols="12" sm="4" md="3">
           <v-card :to="'/trilhas/' + media._id" color="tertiary">
             <v-img v-if="media.picture" :src="media.picture ? media.picture.thumb : null" :alt="media.title" :aspect-ratio="16/9" />
             <v-card-title class="secondary--text">
