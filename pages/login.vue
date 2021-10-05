@@ -2,15 +2,15 @@
   <v-container fluid>
     <div v-show="tab === 'login'">
       <form @submit.prevent="login">
-        <v-text-field v-model="form.email" outlined type="text" label="Digite seu email" />
-        <v-text-field v-model="form.password" outlined type="password" label="Digite sua senha" />
+        <v-text-field v-model="form.email" outlined type="text" label="Digite seu email" append-icon="mdi-email-outline" />
+        <v-text-field v-model="form.password" outlined type="password" label="Digite sua senha" append-icon="mdi-lock" />
         <div class="text-center">
-          <v-btn type="submit" color="success" block large>
+          <v-btn type="submit" color="primary" block x-large>
             Entrar
           </v-btn>
           <p class="mt-4">
             Ainda não possúi uma conta?
-            <v-btn color="primary" small @click="open('register')">
+            <v-btn color="success" small @click="open('register')">
               <strong>Cadastre-se</strong>
             </v-btn>
           </p>
@@ -24,7 +24,7 @@
             <v-text-field v-model="register_form.name" outlined name="name" label="Seu nome completo *" :error-messages="errors" />
           </validation-provider>
 
-          <v-text-field v-model="register_form.organization" outlined label="Você faz parte de alguma organização?" />
+          <!-- <v-text-field v-model="register_form.organization" outlined label="Você faz parte de alguma organização?" /> -->
 
           <validation-provider v-slot="{ errors }" name="CPF/CNPJ" rules="required">
             <v-text-field v-model="register_form.cpf_cnpj" v-mask="['###.###.###-##', '##.###.###/####-##']" outlined name="cpf_cnpj" label="CPF/CNPJ *" :error-messages="errors" />
@@ -35,25 +35,25 @@
           </validation-provider>
 
           <validation-provider v-slot="{ errors }" name="email" rules="required|email">
-            <v-text-field v-model="register_form.email" outlined name="email" label="Seu email" :error-messages="errors" />
+            <v-text-field v-model="register_form.email" outlined name="email" label="Seu email" :error-messages="errors" append-icon="mdi-email-outline" />
           </validation-provider>
 
           <validation-provider v-slot="{ errors }" name="senha" rules="required|min:6">
-            <v-text-field v-model="register_form.password" outlined type="password" name="pass" label="Sua senha" :error-messages="errors" />
+            <v-text-field v-model="register_form.password" outlined type="password" name="pass" label="Sua senha" :error-messages="errors" append-icon="mdi-lock" />
           </validation-provider>
 
           <validation-provider v-slot="{ errors }" name="confirmar senha" rules="required">
-            <v-text-field v-model="register_form.password_confirmation" outlined type="password" name="pass_confirmation" label="Confirme a sua senha" :error-messages="errors" />
+            <v-text-field v-model="register_form.password_confirmation" outlined type="password" name="pass_confirmation" label="Confirme a sua senha" :error-messages="errors" append-icon="mdi-lock-alert-outline" />
             <v-alert v-if="!passwordConfirmed" type="error" class="text-danger">As senhas digitadas não conferem</v-alert>
           </validation-provider>
 
           <div class="text-center">
-            <v-btn type="submit" color="success" block large :disabled="invalid">
+            <v-btn type="submit" color="primary" block x-large :disabled="invalid">
               Cadastrar
             </v-btn>
             <p class="mt-4">
               Já possúi uma conta?
-              <v-btn color="primary" small @click="open('login')">
+              <v-btn color="success" small @click="open('login')">
                 <strong>Entre</strong>
               </v-btn>
             </p>

@@ -10,6 +10,10 @@
             </v-card-title>
             <v-card-text>
               <tags :tags="media.tags" />
+              <div v-if="media.publishing_house" class="mt-3">
+                <v-icon>{{ `mdi-${media.publishing_house.toLowerCase()}` }}</v-icon>
+                <strong class="secondary--text">{{ media.publishing_house }}</strong>
+              </div>
             </v-card-text>
           </v-card>
         </v-col>
