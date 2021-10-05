@@ -34,6 +34,16 @@
             Alterar senha
           </v-btn>
         </v-col>
+        <v-col cols="12" md="6">
+          <validation-provider v-slot="{ errors }" name="offer" rules="required">
+            <v-text-field v-model="form.offer" :items="offers" outlined name="offer" label="Eu Ofereço*" :error-messages="errors" />
+          </validation-provider>
+        </v-col>
+        <v-col cols="12" md="6">
+          <validation-provider v-slot="{ errors }" name="need" rules="required">
+            <v-text-field v-model="form.need" :items="needs" outlined name="need" label="Eu Necessito*" :error-messages="errors" />
+          </validation-provider>
+        </v-col>
       </v-row>
       <v-row v-if="show_password">
         <v-col cols="12" md="6">
@@ -58,6 +68,8 @@ import { ValidationObserver, ValidationProvider } from 'vee-validate'
 
 import mixinForm from '@/mixins/form'
 import roles from '@/data/roles.json'
+import offers from '@/data/offers.json'
+import needs from '@/data/needs.json'
 
 export default {
   components: {
@@ -75,6 +87,8 @@ export default {
     return {
       show_password: !this.user,
       roles,
+      offers,
+      needs,
       form: {
         name: '',
         picture: null,
@@ -84,7 +98,9 @@ export default {
         cpf_cnpj: '',
         password: '',
         password_confirmation: '',
-        role: null
+        role: null,
+        offer: null,
+        need: null
       }
     }
   },

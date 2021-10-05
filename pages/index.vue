@@ -20,7 +20,7 @@
             <v-img :src="require('~/assets/img/trilhas.jpg')" alt="Seja um Senior!" :aspect-ratio="16/9" />
             <v-card-title>Seja um Senior!</v-card-title>
             <v-card-text>
-              <div class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+              <div class="text-primary">A Prolancer.Guru vai mudar a forma como você desenvolve sua carreira!</div>
             </v-card-text>
           </v-card>
         </v-col>
@@ -29,7 +29,7 @@
             <v-img :src="require('~/assets/img/trilhas.jpg')" alt="Trilhe sua evolução" :aspect-ratio="16/9" />
             <v-card-title>Trilhe sua evolução</v-card-title>
             <v-card-text>
-              <div class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+              <div class="text-primary">Os melhores conteúdos gratuitos da web spara Seniores catalogados!</div>
             </v-card-text>
           </v-card>
         </v-col>
@@ -38,7 +38,7 @@
             <v-img :src="require('~/assets/img/trilhas.jpg')" alt="Desafie-se!" :aspect-ratio="16/9" />
             <v-card-title>Desafie-se!</v-card-title>
             <v-card-text>
-              <div class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+              <div class="text-primary">Encontre um prolancer para guiar ou para ser seu guia nesta jornada!</div>
             </v-card-text>
           </v-card>
         </v-col>
