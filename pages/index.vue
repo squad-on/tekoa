@@ -42,9 +42,9 @@
         </v-col>
         <v-col cols="12" md="3">
           <v-card color="tertiary" class="text-center">
-            <v-card-title class="text-h4 justify-center">{{ metrics.categories }}</v-card-title>
+            <v-card-title class="text-h4 justify-center">{{ metrics.users }}</v-card-title>
             <v-card-text>
-              <div class="text-primary">Usuários cadastrados</div>
+              <div class="text-primary">Prolancers cadastrados</div>
             </v-card-text>
           </v-card>
         </v-col>
