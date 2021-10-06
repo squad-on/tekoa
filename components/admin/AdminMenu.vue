@@ -36,7 +36,7 @@
           <v-icon>mdi-radar</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>Match</v-list-item-title>
+          <v-list-item-title>Prolancer.match</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-list-item v-if="$auth.user.role === 'admin'" class="ml-n10 pl-12" to="/admin/pages">
@@ -79,7 +79,7 @@
           <v-list-item-title>Configurações</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item class="ml-n10 pl-12" @click="$auth.logout()">
+      <v-list-item class="ml-n10 pl-12" @click="logout">
         <v-list-item-icon>
           <v-icon>mdi-logout</v-icon>
         </v-list-item-icon>
@@ -119,7 +119,12 @@ export default {
     },
     async list () {
       this.menus = await this.$axios.$get('/api/menus/submenus', { params: { populate: 'page' } })
+    },
+    logout() {
+      this.$router.replace('/')
+      this.$auth.logout()
     }
+
   }
 }
 </script>

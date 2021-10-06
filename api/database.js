@@ -5,6 +5,7 @@ require('./models/Post')
 require('./models/Page')
 require('./models/Contact')
 require('./models/Media')
+require('./models/Conversation')
 require('./config/passport')
 
 const mongoose = require('mongoose')

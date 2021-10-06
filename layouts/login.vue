@@ -3,7 +3,7 @@
     <div v-show="settings">
       <v-row no-gutters>
         <v-col cols="12" md="6" class="d-flex align-center justify-center">
-          <div style="width: 100%" class="px-md-10">
+          <div style="width: 100%;" class="px-md-10">
             <v-container fluid class="d-flex justify-center mb-3 mt-6">
               <n-link to="/">
                 <v-img

@@ -24,6 +24,16 @@
           />
         </n-link>
         <v-spacer />
+        <n-link v-if="$auth.user" to="/conexoes">
+          <v-badge
+            :content="unreadMessages"
+            :value="unreadMessages"
+            :color="'red'"
+            overlap
+          >
+            <v-icon>mdi-email</v-icon>
+          </v-badge>
+        </n-link>
         <v-app-bar-nav-icon @click="show_drawer = !show_drawer" />
       </v-app-bar>
 
@@ -52,9 +62,26 @@ export default {
       show_drawer: null
     }
   },
+
   computed: {
     settings () {
       return this.$store.state.settings
+    },
+    unreadMessages() {
+      return this.$store.state.unread_messages
+    }
+  },
+  created () {
+    this.checkUnreadMessages()
+    setInterval(() => {
+      this.checkUnreadMessages()
+    }, 10000)
+  },
+  methods: {
+    async checkUnreadMessages() {
+      if (this.$auth.user) {
+        this.$store.commit('setUnreadMessages', await this.$axios.$get('/api/conversations/unread'))
+      }
     }
   },
   head () {
