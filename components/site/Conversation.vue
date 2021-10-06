@@ -2,6 +2,7 @@
   <v-dialog
     transition="dialog-bottom-transition"
     max-width="600"
+    scrollable
     @change="form.message = null"
   >
     <template v-slot:activator="{ on, attrs }">
