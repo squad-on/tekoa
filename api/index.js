@@ -5,9 +5,12 @@ const app = express()
 const router = require('express').Router()
 const session = require('express-session')
 const cors = require('cors')
-
 const mongoose = require('mongoose')
+const categories = require('../data/categories.json')
+
 const User = mongoose.model('User')
+const Media = mongoose.model('Media')
+const Conversation = mongoose.model('Conversation')
 const Settings = mongoose.model('Settings')
 const auth = require('./config/auth')
 
@@ -40,6 +43,14 @@ router.get('/profile', auth.authenticated, function(req, res) {
       res.status(422).send('Usuário não encontrado')
     }
   })
+})
+
+router.get('/metrics', async function(req, res) {
+  const userCount = await User.count()
+  const mediasCount = await Media.count()
+  const conversationsCount = await Conversation.count()
+
+  res.send({ categories: categories.length, users: userCount, medias: mediasCount, conversations: conversationsCount })
 })
 
 router.get('/settings', async (req, res) => {
