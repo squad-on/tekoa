@@ -64,10 +64,22 @@ UserSchema.methods.data = function() {
     picture: this.picture,
     organization: this.organization,
     phone: this.phone,
-    cpf_cnpj: this.cpf_cnpj
+    cpf_cnpj: this.cpf_cnpj,
+    offer: this.offer,
+    need: this.need
   }
 }
 
+UserSchema.methods.publicData = function() {
+  return {
+    _id: this._id,
+    name: this.name,
+    picture: this.picture,
+    organization: this.organization,
+    offer: this.offer,
+    need: this.need
+  }
+}
 UserSchema.methods.generateJWT = function () {
   const today = new Date()
   const exp = new Date(today)

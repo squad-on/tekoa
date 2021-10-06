@@ -15,8 +15,8 @@
         </v-btn>
       </div>
       <v-row>
-        <v-col cols="12" md="3">
-          <v-card color="#282A38" to="/login?tab=register">
+        <v-col cols="12" sm="4" md="3">
+          <v-card color="#282A38" to="/seja-um-senior">
             <v-img :src="require('~/assets/img/senior.jpg')" alt="Seja um Senior!" :aspect-ratio="16/9" />
             <v-card-title>Seja um Senior!</v-card-title>
             <v-card-text>
@@ -24,7 +24,7 @@
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="12" md="3">
+        <v-col cols="12" sm="4" md="3">
           <v-card color="#282A38" to="/trilhas">
             <v-img :src="require('~/assets/img/trilhas_c.jpg')" alt="Trilhe sua evolução" :aspect-ratio="16/9" />
             <v-card-title>Trilhe sua evolução</v-card-title>
@@ -33,7 +33,7 @@
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="12" md="3">
+        <v-col cols="12" sm="4" md="3">
           <v-card color="#282A38" to="/match">
             <v-img :src="require('~/assets/img/trilhas_b.jpg')" alt="Desafie-se!" :aspect-ratio="16/9" />
             <v-card-title>Desafie-se!</v-card-title>
@@ -41,15 +41,15 @@
               <div class="text-primary">Encontre um prolancer para guiar ou para ser seu guia nesta jornada!</div>
             </v-card-text>
           </v-card>
-          <v-col cols="12" md="3">
-            <v-card color="#282A38" to="/jornada">
-              <v-img :src="require('~/assets/img/trilhas_d.jpg')" alt="Desafie-se!" :aspect-ratio="16/9" />
-              <v-card-title>Jornada!</v-card-title>
-              <v-card-text>
-                <div class="text-primary">Conheça nossa Jornada! Nossa origem é uma luta interna pela Senioridade!</div>
-              </v-card-text>
-            </v-card>
-          </v-col>
+        </v-col>
+        <v-col cols="12" sm="4" md="3">
+          <v-card color="#282A38" to="/jornada">
+            <v-img :src="require('~/assets/img/trilhas_d.jpg')" alt="Desafie-se!" :aspect-ratio="16/9" />
+            <v-card-title>Jornada!</v-card-title>
+            <v-card-text>
+              <div class="text-primary">Conheça nossa Jornada! Nossa origem é uma luta interna pela Senioridade!</div>
+            </v-card-text>
+          </v-card>
         </v-col>
       </v-row>
     </div>

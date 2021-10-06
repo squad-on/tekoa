@@ -2,12 +2,12 @@
   <div class="pl-3">
     <v-list dark nav>
       <v-list-item class="mb-0" :to="$auth.user ? '/profile' : '/login?tab=register'">
-        <v-list-item-avatar color="#4F516F" size="58">
+        <v-list-item-avatar color="#4F516F">
           <v-img v-if="$auth.user && $auth.user.picture && $auth.user.picture.url" :src="$auth.user.picture.url" />
           <v-icon v-else>mdi-account</v-icon>
         </v-list-item-avatar>
         <v-list-item-content>
-          <v-list-item-title v-if="$auth.user" class="text-h6">
+          <v-list-item-title v-if="$auth.user">
             {{ $auth.user.name }}
           </v-list-item-title>
           <v-list-item-title v-else class="text-h6 primary--text">
@@ -26,12 +26,21 @@
           <v-list-item-title>Dashboard</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item to="/trilhas" class="ml-n10 pl-12">
+      <v-list-item v-if="$auth.user" to="/conexoes" class="ml-n10 pl-12">
         <v-list-item-icon>
-          <v-icon>mdi-hiking</v-icon>
+          <v-badge
+            :content="unreadMessages"
+            :value="unreadMessages"
+            :color="'red'"
+            overlap
+          >
+            <v-icon>mdi-email-outline</v-icon>
+          </v-badge>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>Trilhas</v-list-item-title>
+          <v-list-item-title>
+            Minhas conexões
+          </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-list-item to="/match" class="ml-n10 pl-12">
@@ -39,7 +48,17 @@
           <v-icon>mdi-radar</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>Match</v-list-item-title>
+          <v-list-item-title>
+            Prolancer.match
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item to="/trilhas" class="ml-n10 pl-12">
+        <v-list-item-icon>
+          <v-icon>mdi-hiking</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Trilhas</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-list-item v-for="item in menus" :key="item._id" v-bind="getLink(item)" class="ml-n10 pl-12">
@@ -58,7 +77,7 @@
           <v-list-item-title>Painel administrativo</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item v-if="$auth.user" class="ml-n10 pl-12" @click="$auth.logout()">
+      <v-list-item v-if="$auth.user" class="ml-n10 pl-12" @click="logout">
         <v-list-item-icon>
           <v-icon>mdi-logout</v-icon>
         </v-list-item-icon>
@@ -79,6 +98,9 @@ export default {
   computed: {
     settings() {
       return this.$store.state.settings
+    },
+    unreadMessages() {
+      return this.$store.state.unread_messages
     }
   },
   created () {
@@ -98,6 +120,10 @@ export default {
     },
     async list () {
       this.menus = await this.$axios.$get('/api/menus/submenus', { params: { populate: 'page' } })
+    },
+    logout() {
+      this.$router.replace('/')
+      this.$auth.logout()
     }
   }
 }

@@ -30,6 +30,22 @@ router.get('/', auth.admin, function(req, res) {
   })
 })
 
+router.get('/match', auth.authenticated, function(req, res) {
+  const filters = {
+    need: { $ne: null },
+    offer: { $ne: null },
+    _id: { $ne: req.user._id }
+  }
+
+  User.find(filters).exec(function(err, users) {
+    if (err) {
+      res.status(422).send(err.response.data)
+    } else {
+      res.json(users.map(user => user.publicData()))
+    }
+  })
+})
+
 router.get('/:id', auth.admin, function(req, res) {
   User.findById(req.params.id).then(function(user) {
     return res.send(user.data())
@@ -62,6 +78,16 @@ router.post('/register', (req, res, next) => {
   user.save().then(function() {
     return res.send(user.data())
   }).catch(next)
+})
+
+router.put('/match', auth.authenticated, function(req, res, next) {
+  User.findById(req.user._id).then(function(user) {
+    user.need = req.body.need
+    user.offer = req.body.offer
+    user.save().then(function() {
+      return res.send(user.data())
+    }).catch(next)
+  })
 })
 
 router.put('/:id', auth.admin, function(req, res, next) {

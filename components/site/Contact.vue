@@ -25,7 +25,6 @@
           </v-btn>
         </div>
       </v-form>
-      </v-form>
     </ValidationObserver>
   </div>
 </template>
