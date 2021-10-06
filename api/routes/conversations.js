@@ -30,9 +30,10 @@ router.get('/unread', auth.authenticated, function(req, res) {
     if (err) {
       res.status(422).send(err.response.data)
     } else {
-      res.json(conversations.filter(conversation => {
-        return conversation.messages.find(message => message.user !== req.user._id && !message.read)
-      }).length)
+      conversations = conversations.filter(conversation => {
+        return conversation.messages.find(message => message.user.toString() !== req.user._id && !message.read)
+      })
+      res.json(conversations.length)
     }
   })
 })

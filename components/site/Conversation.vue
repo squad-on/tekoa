@@ -114,7 +114,7 @@ export default {
       if (this.conversation && this.conversation.messages) {
         return this.conversation.messages.find(message => message.user !== this.$auth.user._id && !message.read)
       }
-      return 0
+      return false
     }
   },
   created() {

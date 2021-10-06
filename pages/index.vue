@@ -41,15 +41,15 @@
               <div class="text-primary">Encontre um prolancer para guiar ou para ser seu guia nesta jornada!</div>
             </v-card-text>
           </v-card>
-          <v-col cols="12" md="3">
-            <v-card color="#282A38" to="/desafios">
-              <v-img :src="require('~/assets/img/trilhas_c.jpg')" alt="Desafie-se!" :aspect-ratio="16/9" />
-              <v-card-title>Jornada!</v-card-title>
-              <v-card-text>
-                <div class="text-primary">Conheça nossa Jornada! Nossa origem é uma luta interna pela Senioridade!</div>
-              </v-card-text>
-            </v-card>
-          </v-col>
+        </v-col>
+        <v-col cols="12" sm="4" md="3">
+          <v-card color="#282A38" to="/desafios">
+            <v-img :src="require('~/assets/img/trilhas_c.jpg')" alt="Desafie-se!" :aspect-ratio="16/9" />
+            <v-card-title>Jornada!</v-card-title>
+            <v-card-text>
+              <div class="text-primary">Conheça nossa Jornada! Nossa origem é uma luta interna pela Senioridade!</div>
+            </v-card-text>
+          </v-card>
         </v-col>
       </v-row>
     </div>

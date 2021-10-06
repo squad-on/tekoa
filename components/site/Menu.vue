@@ -26,24 +26,6 @@
           <v-list-item-title>Dashboard</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item to="/trilhas" class="ml-n10 pl-12">
-        <v-list-item-icon>
-          <v-icon>mdi-hiking</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title>Trilhas</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-      <v-list-item to="/match" class="ml-n10 pl-12">
-        <v-list-item-icon>
-          <v-icon>mdi-radar</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title>
-            Prolancer.match
-          </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
       <v-list-item v-if="$auth.user" to="/conexoes" class="ml-n10 pl-12">
         <v-list-item-icon>
           <v-badge
@@ -59,6 +41,24 @@
           <v-list-item-title>
             Minhas conexões
           </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item to="/match" class="ml-n10 pl-12">
+        <v-list-item-icon>
+          <v-icon>mdi-radar</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>
+            Prolancer.match
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item to="/trilhas" class="ml-n10 pl-12">
+        <v-list-item-icon>
+          <v-icon>mdi-hiking</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Trilhas</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-list-item v-for="item in menus" :key="item._id" v-bind="getLink(item)" class="ml-n10 pl-12">
