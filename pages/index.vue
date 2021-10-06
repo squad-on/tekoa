@@ -34,7 +34,7 @@
           </v-card>
         </v-col>
         <v-col cols="12" md="3">
-          <v-card color="#282A38" to="/desafios">
+          <v-card color="#282A38" to="/match">
             <v-img :src="require('~/assets/img/trilhas_b.jpg')" alt="Desafie-se!" :aspect-ratio="16/9" />
             <v-card-title>Desafie-se!</v-card-title>
             <v-card-text>
@@ -42,8 +42,8 @@
             </v-card-text>
           </v-card>
           <v-col cols="12" md="3">
-            <v-card color="#282A38" to="/desafios">
-              <v-img :src="require('~/assets/img/trilhas_c.jpg')" alt="Desafie-se!" :aspect-ratio="16/9" />
+            <v-card color="#282A38" to="/jornada">
+              <v-img :src="require('~/assets/img/trilhas_d.jpg')" alt="Desafie-se!" :aspect-ratio="16/9" />
               <v-card-title>Jornada!</v-card-title>
               <v-card-text>
                 <div class="text-primary">Conheça nossa Jornada! Nossa origem é uma luta interna pela Senioridade!</div>
