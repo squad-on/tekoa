@@ -4,28 +4,32 @@
       <v-row>
         <v-col cols="12" md="6">
           <validation-provider v-slot="{ errors }" name="ofereço" rules="required">
-            <h3 class="mb-3"><strong class="primary--text">Ofereço</strong> ajuda/mentoria em: </h3>
-            <v-select
-              v-model="form.offer"
-              hide-details="auto" :items="categories"
-              chips
-              multiple
-              outlined
-              :error-messages="errors"
-            />
+            <v-card color="tertiary pa-6">
+              <h3 class="mb-3"><strong class="primary--text">Ofereço</strong> ajuda/mentoria em: </h3>
+              <v-select
+                v-model="form.offer"
+                hide-details="auto" :items="categories"
+                chips
+                multiple
+                outlined
+                :error-messages="errors"
+              />
+            </v-card>
           </validation-provider>
         </v-col>
         <v-col cols="12" md="6">
           <validation-provider v-slot="{ errors }" name="preciso" rules="required">
-            <h3 class="mb-3"><strong class="primary--text">Preciso</strong> de ajuda/mentoria em: </h3>
-            <v-select
-              v-model="form.need"
-              hide-details="auto" :items="categories"
-              chips
-              multiple
-              outlined
-              :error-messages="errors"
-            />
+            <v-card color="tertiary pa-6">
+              <h3 class="mb-3"><strong class="primary--text">Preciso</strong> de ajuda/mentoria em: </h3>
+              <v-select
+                v-model="form.need"
+                hide-details="auto" :items="categories"
+                chips
+                multiple
+                outlined
+                :error-messages="errors"
+              />
+            </v-card>
           </validation-provider>
         </v-col>
       </v-row>

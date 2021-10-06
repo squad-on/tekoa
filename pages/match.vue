@@ -8,22 +8,26 @@
     <div v-else>
       <v-row class="mb-3">
         <v-col cols="12" md="6">
-          <h3 class="mb-3"><strong class="primary--text">Ofereço</strong> ajuda/mentoria em: </h3>
-          <div>
-            <v-chip v-for="offer in $auth.user.offer" :key="'offer-' + offer" class="mr-1">{{ offer }}</v-chip>
-            <v-btn icon @click="edit = true">
-              <v-icon>mdi-pencil</v-icon>
-            </v-btn>
-          </div>
+          <v-card color="tertiary pa-6">
+            <h3 class="mb-3"><strong class="primary--text">Ofereço</strong> ajuda/mentoria em: </h3>
+            <div>
+              <v-chip v-for="offer in $auth.user.offer" :key="'offer-' + offer" class="mr-1">{{ offer }}</v-chip>
+              <v-btn icon @click="edit = true">
+                <v-icon>mdi-pencil</v-icon>
+              </v-btn>
+            </div>
+          </v-card>
         </v-col>
         <v-col cols="12" md="6">
-          <h3 class="mb-3"><strong class="primary--text">Preciso</strong> de ajuda/mentoria em: </h3>
-          <div>
-            <v-chip v-for="need in $auth.user.need" :key="'need-' + need" class="mr-1">{{ need }}</v-chip>
-            <v-btn icon @click="edit = true">
-              <v-icon>mdi-pencil</v-icon>
-            </v-btn>
-          </div>
+          <v-card color="tertiary pa-6">
+            <h3 class="mb-3"><strong class="primary--text">Preciso</strong> de ajuda/mentoria em: </h3>
+            <div>
+              <v-chip v-for="need in $auth.user.need" :key="'need-' + need" class="mr-1">{{ need }}</v-chip>
+              <v-btn icon @click="edit = true">
+                <v-icon>mdi-pencil</v-icon>
+              </v-btn>
+            </div>
+          </v-card>
         </v-col>
       </v-row>
       <div v-if="fullMatches && fullMatches.length">
