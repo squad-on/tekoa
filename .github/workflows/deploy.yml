@@ -1,7 +1,7 @@
-name: Testes de integração
+name: Deploy em produção
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
@@ -47,3 +47,16 @@ jobs:
         run: yarn build
       # - name: Run tests 🧪
       #   run: yarn test
+  deploy:
+    runs-on: ubuntu-latest
+    needs: ci
+    steps:
+      - name: Deploy
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: "source ~/.nvm/nvm.sh; cd ~/server/; ./update.sh; ./deploy.sh prolancer-guru; exit"
+          host: prolancer.guru
+          username: root
+          privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+        env:
+          CI: true
